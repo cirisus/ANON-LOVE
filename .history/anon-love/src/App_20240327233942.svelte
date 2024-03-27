@@ -3,7 +3,7 @@
 	import Layout from "./lib/layout.svelte";
 	import Home from "./lib/Home.svelte";
 	import About from "./lib/About.svelte";
-	import Test from "./lib/test.svelte";
+	import { Test } from "./lib/test.svelte";
 	export let name;
 </script>
 
