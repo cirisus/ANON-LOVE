@@ -7,7 +7,7 @@
 <Router>
 	<Layout>
 		<main>
-			<h1>About Page of {name}</h1>
+			<h1>About Page</h1>
 		</main>
 	</Layout>
 </Router>

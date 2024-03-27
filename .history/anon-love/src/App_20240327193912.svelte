@@ -1,13 +1,20 @@
 <script>
 	import { Router, Route, Link } from "svelte-routing";
 	import Layout from "./layout.svelte";
+	import Home from "./Home.svelte";
+	import About from "./About.svelte";
 	export let name;
 </script>
 
 <Router>
 	<Layout>
 		<main>
-			<h1>About Page of {name}</h1>
+			<h1>{name}~Love!</h1>
+			<Link to="/">Home</Link>
+			<Link to="about">About</Link>
+
+			<Route path="/" component={Home} />
+			<Route path="about" component={About} />
 		</main>
 	</Layout>
 </Router>
