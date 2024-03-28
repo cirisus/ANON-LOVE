@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import Loading from "loading.ts"
 	import Behavior from "script.ts"
 </script>
