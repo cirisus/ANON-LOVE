@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "sync": "node scripts/sync.js",
-    "build": "npm run sync && rollup -c",
+    "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear"
   },
