@@ -12,10 +12,10 @@
         <Route path="/" let:params>
             <Home {name} />
         </Route>
-		<Route path="/about" let:params>
+		<Route path="about" let:params>
             <About {name} />
         </Route>
-		<Route path="/test" let:params>
+		<Route path="test" let:params>
 			<Test/>
 		</Route>
 	</Layout>
