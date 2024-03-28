@@ -1,5 +1,5 @@
 <script>
-	import Link from "svelte-spa-router";
+	import { Link } from "svelte-spa-router";
 </script>
 
 <header>

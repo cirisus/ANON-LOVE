@@ -4,9 +4,9 @@
 
 <header>
 	<nav>
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/test">Test</a>
+		<Link href="/">Home</Link>
+		<Link href="/about">About</Link>
+		<Link href="/test">Test</Link>
 	</nav>
 </header>
 

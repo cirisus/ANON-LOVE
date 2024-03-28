@@ -4,7 +4,7 @@
 	import Home from "./lib/Home/+page.svelte";
 	import About from "./lib/About/+page.svelte";
 	import Test from "./lib/Test/+page.svelte";
-	export let name = 'ANON';
+	export let name;
 
 	let routes = {
 		'/': Home,
@@ -14,8 +14,8 @@
 	}
 </script>
 
-<Layout>
-	<Router {routes} let:component={Component}>
+<Router {routes} let:component={Component}>
+	<Layout>
 		<svelte:component this={Component} {name} />
-	</Router>
-</Layout>
+	</Layout>
+</Router>

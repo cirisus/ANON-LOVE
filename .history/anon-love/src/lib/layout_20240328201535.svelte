@@ -1,13 +1,13 @@
 <script>
-	import Link from "svelte-spa-router";
+    import { Link } from "svelte-routing";
 </script>
 
 <header>
-	<nav>
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/test">Test</a>
-	</nav>
+    <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/test">Test</Link>
+    </nav>
 </header>
 
 <main>
@@ -26,7 +26,7 @@
 		margin: 0 auto;
 	}
 
-	span.footer {
+	h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 1rem;

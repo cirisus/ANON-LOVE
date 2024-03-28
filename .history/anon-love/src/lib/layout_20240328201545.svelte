@@ -1,13 +1,13 @@
 <script>
-	import Link from "svelte-spa-router";
+    import { Link } from "svelte-routing";
 </script>
 
 <header>
-	<nav>
-		<a href="/">Home</a>
-		<a href="/about">About</a>
-		<a href="/test">Test</a>
-	</nav>
+    <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/test">Test</Link>
+    </nav>
 </header>
 
 <main>
