@@ -27,10 +27,5 @@
         height: 100%;
         background-color: #f5f5f5;
         transition: right 0.5s;
-        > a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
     }
 </style>
