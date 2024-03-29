@@ -1,7 +1,7 @@
 <script lang="js">
 	import Loading from "./loading.js";
 	import Behavior from "./script.js";
-	import Navigator from '../Navigator/+page.svelte';
+	import Navigator from './Navigator/+page.svelte';
 
 	let links = [//navigator stack
 		{ href: '/home', text: 'Home' },

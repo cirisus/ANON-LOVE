@@ -49,7 +49,7 @@ export default {
 	},
 	plugins: [
 		svelte({
-			preprocess: preprocessor,
+			preprocess: preprocess(),
 			compilerOptions: {
 				dev: !production
 			}

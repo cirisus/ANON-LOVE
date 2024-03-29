@@ -1,27 +1,4 @@
-/* Root */
-:root {
-	--mygo: rgb(76, 152, 228);
-	--mygo-reverse: rgb(243, 232, 78);
-
-	--anon-base: rgb(255,136,153);
-	--anon-light: rgb(253, 195, 195);
-
-	--tomori-base: rgb(119,187,221);
-	--tomori-light: rgb(177, 210, 243);
-
-	--soyo-base: rgb(255,221,136);
-	--soyo-light: rgb(255, 243, 195);
-
-	--rikki-base: rgb(119,119,170);
-	--rikki-light: rgb(170, 170, 221);
-
-	--rana-base: rgb(119,221,119);
-	--rana-light: rgb(170, 221, 170);
-}
 /* Structure */
-* {
-	box-sizing: border-box;
-}
 html, body {
 	position: relative;
 	width: 100%;
@@ -41,16 +18,11 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-	width: -webkit-fill-available;
-	padding: .0875rem 0;
-	font-weight: bold;
-	overflow: hidden;
 	& span {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		font-size: .8rem;
-		color: var(--anon-base);
 	}
 }
 /* Universal Labels */
