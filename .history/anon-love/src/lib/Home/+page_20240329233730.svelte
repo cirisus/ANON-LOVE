@@ -25,13 +25,4 @@
 
 <style lang="scss">
 	@import './style.scss';
-	#avatar {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 0 auto;
-		> img {
-			max-width: 100px;
-		}
-	}
 </style>
