@@ -5,8 +5,7 @@ import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
-import sveltePreprocess from 'svelte-preprocess';
-import autoprefixer from 'autoprefixer';
+import preprocess from 'svelte-preprocess';
 
 const production = !process.env.ROLLUP_WATCH;
 const preprocessor = sveltePreprocess({
@@ -14,7 +13,7 @@ const preprocessor = sveltePreprocess({
 	  includePaths: ['src'],
 	},
 	postcss: {
-	  plugins: [autoprefixer],
+	  plugins: [require('autoprefixer')],
 	},
   });
 

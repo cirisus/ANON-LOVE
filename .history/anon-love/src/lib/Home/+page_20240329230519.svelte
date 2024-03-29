@@ -1,6 +1,6 @@
 <script lang="js">
-	import Loading from "./scripts/loading.js";
-	import Behavior from "./scripts/common.js";
+	import Loading from "./loading.js";
+	import Behavior from "./script.js";
 	import Navigator from '../Navigator/+page.svelte';
 
 	let sideNavigator = [//navigator stack
@@ -14,7 +14,7 @@
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
 			<div id="avatar">
-				<img src="https://cdn.jsdelivr.net/gh/cirisus/ANON-LOVE/anon-love/public/asset/home-page.png" alt="avatar" />
+				<img src="/public/asset/home-page.png" alt="avatar" />
 			</div>
 		</div>
 		<div slot="extra-bottom">
@@ -25,13 +25,4 @@
 
 <style lang="scss">
 	@import './style.scss';
-	#avatar {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: 0 auto;
-		> img {
-			max-width: 100px;
-		}
-	}
 </style>
