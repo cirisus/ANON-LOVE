@@ -14,9 +14,11 @@
         window.addEventListener('load', function() {
             updateProgress(100, (newProgress) => {
                 progress = newProgress;
-                if (newProgress === 100) {
-                    destroyLoader();
-                    isLoading = false;
+                if (newProgress === 1000) {
+                    setTimeout(() => {
+                        destroyLoader();
+                        isLoading = false;
+                    }, 500);
                 }
             });
         });

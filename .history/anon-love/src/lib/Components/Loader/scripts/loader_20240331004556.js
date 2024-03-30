@@ -19,7 +19,7 @@ export function updateProgress(newProgress, callback) {
             clearInterval(interval);
             setTimeout(() => {
                 interval = setInterval(incrementProgress, currentProgress < 30 ? 10 : 7);
-            }, currentProgress === 30 ? 300 : 200);
+            }, currentProgress === 30 ? 300 : 2000);
             return;
         }
         incrementProgress();
@@ -30,7 +30,6 @@ export function updateProgress(newProgress, callback) {
             return;
         }
         currentProgress++;
-        progressText.textContent = `${currentProgress}%`;
         progressBars.forEach((progressBar, index) => {
             let clipPath;
             if (index === 0) {
@@ -65,4 +64,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2000);
+}, 600000);

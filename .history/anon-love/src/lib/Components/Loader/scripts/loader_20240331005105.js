@@ -65,4 +65,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2000);
+}, 3000);
