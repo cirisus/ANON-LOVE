@@ -1,6 +1,6 @@
 export function setupSideNav(sideNav) {
     const minDistance = 150;
-    const maxDistance = 300;
+    const maxDistance = 400;
     const minRotateY = -30;
     const maxRotateY = 0;
     const minOpacity = 0;

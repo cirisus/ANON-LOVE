@@ -40,7 +40,7 @@
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
         &:hover {
-            scale: .95;
+            scale: 1;
         }
         > a {
             display: flex;

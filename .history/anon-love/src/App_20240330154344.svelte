@@ -21,5 +21,5 @@
 </Layout>
 
 <style lang="scss">
-	@import './global.css';
+	@import './global.scss';
 </style>

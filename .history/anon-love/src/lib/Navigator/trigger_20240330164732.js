@@ -1,5 +1,5 @@
 export function setupSideNav(sideNav) {
-    const minDistance = 150;
+    const minDistance = 50;
     const maxDistance = 300;
     const minRotateY = -30;
     const maxRotateY = 0;
@@ -15,7 +15,6 @@ export function setupSideNav(sideNav) {
             const opacity = minOpacity + normalizedDistance * (maxOpacity - minOpacity);
             sideNav.style.transform = `rotateY(${rotateY}deg)`;
             sideNav.style.opacity = `${opacity}`;
-            sideNav.style.pointerEvents = 'auto';
         } else {
             sideNav.style.transform = `rotateY(${minRotateY}deg)`;
             sideNav.style.opacity = `${minOpacity}`;

@@ -30,7 +30,7 @@
         /* Dynamic Calc */
         transform: rotateY(-30deg);
         transform-origin: right;
-        scale:0.95;
+        scale:0.8;
         opacity: 0;
         pointer-events: none;
         transition: scale .2s;
@@ -40,7 +40,7 @@
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
         &:hover {
-            scale: .95;
+            scale: 1;
         }
         > a {
             display: flex;

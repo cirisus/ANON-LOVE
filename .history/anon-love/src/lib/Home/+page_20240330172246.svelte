@@ -16,8 +16,8 @@
 			<div id="avatar">
 				<img src="https://cdn.jsdelivr.net/gh/cirisus/ANON-LOVE/anon-love/public/asset/home-page.png" alt="avatar" />
 			</div>
+			<hr>
 		</div>
-		<hr>
 
 		<div slot="extra-bottom">
 			<hr>
@@ -28,4 +28,13 @@
 
 <style lang="scss">
 	@import './style.scss';
+	#avatar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		> img {
+			max-width: 100px;
+		}
+	}
 </style>

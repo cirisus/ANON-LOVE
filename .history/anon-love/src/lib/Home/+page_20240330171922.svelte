@@ -18,9 +18,7 @@
 			</div>
 		</div>
 		<hr>
-
 		<div slot="extra-bottom">
-			<hr>
 			<p>Contact me through: <a href="mailto:cirisus@outlook.com">Cirisus@outlook.com</a></p>
 		</div>
 	</Navigator>
@@ -28,4 +26,13 @@
 
 <style lang="scss">
 	@import './style.scss';
+	#avatar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		> img {
+			max-width: 100px;
+		}
+	}
 </style>

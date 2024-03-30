@@ -16,8 +16,8 @@
 			<div id="avatar">
 				<img src="https://cdn.jsdelivr.net/gh/cirisus/ANON-LOVE/anon-love/public/asset/home-page.png" alt="avatar" />
 			</div>
+			<hr>
 		</div>
-		<hr>
 
 		<div slot="extra-bottom">
 			<hr>

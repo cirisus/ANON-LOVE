@@ -13,12 +13,12 @@ div[slot="extra-top"] {
         position: sticky;
 		justify-content: center;
 		align-items: center;
-		margin: 1rem auto;
+		margin: 0 auto;
+        padding: 1rem 0;
         border: 3px solid var(--anon-base);
         border-radius: 1rem;
 		> img {
 			max-width: 100px;
-            border-radius: .85rem;
 		}
 	}
 }
