@@ -19,7 +19,7 @@ export function updateProgress(newProgress, callback) {
             clearInterval(interval);
             setTimeout(() => {
                 interval = setInterval(incrementProgress, currentProgress < 30 ? 10 : 7);
-            }, currentProgress === 30 ? 300 : 200);
+            }, currentProgress === 30 ? 300 : 2000);
             return;
         }
         incrementProgress();
@@ -65,4 +65,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2000);
+}, 3000);

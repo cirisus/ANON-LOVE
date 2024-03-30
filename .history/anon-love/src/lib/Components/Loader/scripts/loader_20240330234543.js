@@ -19,7 +19,7 @@ export function updateProgress(newProgress, callback) {
             clearInterval(interval);
             setTimeout(() => {
                 interval = setInterval(incrementProgress, currentProgress < 30 ? 10 : 7);
-            }, currentProgress === 30 ? 300 : 200);
+            }, currentProgress === 30 ? 300 : 2000);
             return;
         }
         incrementProgress();
@@ -30,18 +30,11 @@ export function updateProgress(newProgress, callback) {
             return;
         }
         currentProgress++;
-        progressText.textContent = `${currentProgress}%`;
-        progressBars.forEach((progressBar, index) => {
-            let clipPath;
-            if (index === 0) {
-                clipPath = `polygon(0 0, ${currentProgress}% 0, ${currentProgress}% 100%, 0 100%)`;
-            } else {
-                clipPath = `polygon(${100 - currentProgress}% 0, 100% 0, 100% 100%, ${100 - currentProgress}% 100%)`;
-            }
-            progressBar.style.clipPath = clipPath;
-            progressBar.style.webkitClipPath = clipPath;
-            progressBar.style.setProperty('--shadow-width', `${currentProgress}%`);
+        progressBars.forEach(progressBar => {
+            progressBar.style.transform = `scaleX(${currentProgress / 100})`;
         });
+        progressText.textContent = `${currentProgress}%`;
+        callback && callback(currentProgress);
     }
 }
 
@@ -65,4 +58,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2000);
+}, 6000);

@@ -19,7 +19,7 @@ export function updateProgress(newProgress, callback) {
             clearInterval(interval);
             setTimeout(() => {
                 interval = setInterval(incrementProgress, currentProgress < 30 ? 10 : 7);
-            }, currentProgress === 30 ? 300 : 200);
+            }, currentProgress === 30 ? 300 : 2000);
             return;
         }
         incrementProgress();
@@ -30,7 +30,7 @@ export function updateProgress(newProgress, callback) {
             return;
         }
         currentProgress++;
-        progressText.textContent = `${currentProgress}%`;
+        progressText.textContent = currentProgress;
         progressBars.forEach((progressBar, index) => {
             let clipPath;
             if (index === 0) {
@@ -43,7 +43,6 @@ export function updateProgress(newProgress, callback) {
             progressBar.style.setProperty('--shadow-width', `${currentProgress}%`);
         });
     }
-}
 
 export function destroyLoader() {
     const loader = document.querySelector('.loader');
@@ -65,4 +64,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2000);
+}, 600000);

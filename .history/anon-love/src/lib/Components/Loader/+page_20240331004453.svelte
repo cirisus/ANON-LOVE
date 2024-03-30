@@ -14,9 +14,11 @@
         window.addEventListener('load', function() {
             updateProgress(100, (newProgress) => {
                 progress = newProgress;
-                if (newProgress === 100) {
-                    destroyLoader();
-                    isLoading = false;
+                if (newProgress === 1000) {
+                    setTimeout(() => {
+                        destroyLoader();
+                        isLoading = false;
+                    }, 500);
                 }
             });
         });
@@ -85,7 +87,9 @@
             position: absolute;
             top: 0;
             left: 0;
-            box-shadow: inset 0 0 10px var(--anon-light);
+            clip-path: var(--clip-path);
+            -webkit-clip-path: var(--clip-path);
+            box-shadow: 0 0 10px var(--anon-light);
             z-index: 1;
         }
     }

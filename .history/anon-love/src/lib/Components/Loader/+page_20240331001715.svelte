@@ -14,9 +14,11 @@
         window.addEventListener('load', function() {
             updateProgress(100, (newProgress) => {
                 progress = newProgress;
-                if (newProgress === 100) {
-                    destroyLoader();
-                    isLoading = false;
+                if (newProgress === 1000) {
+                    setTimeout(() => {
+                        destroyLoader();
+                        isLoading = false;
+                    }, 500);
                 }
             });
         });
@@ -54,7 +56,7 @@
         transform: translate(-50%, -50%);
         width: 100%;
         height: 15px;
-        background-color: rgb(from var(--anon-faint) r g b / 75%);
+        background-color: #f3f3f3;
         display: flex;
         justify-content: space-between;
         box-shadow: 0 0 10px 1px rgb(from var(--mygo-reverse) r g b / 50%);
@@ -64,11 +66,10 @@
 
     .progress-bar {
         height: 100%;
-        position: relative;
         background-color: var(--mygo);
         background-image: url(/anon-love/public/asset/progress_bg.png);
         background-size: contain;
-        transition: clippath 75ms;
+        transition: transform 75ms;
         transition-delay: -75ms;
         width: 100%;
         &[data-pos="left"] {
@@ -76,17 +77,6 @@
         }
         &[data-pos="right"] {
             transform-origin: right;
-        }
-        &::before {
-            content: "";
-            display: flex;
-            width: var(--shadow-width);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            box-shadow: inset 0 0 10px var(--anon-light);
-            z-index: 1;
         }
     }
 .progress-text {
