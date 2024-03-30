@@ -12,7 +12,7 @@ export function setupSideNav(sideNav) {
         } else {
             sideNav.style.right = `-${sideNavWidth}px`;
             sideNav.style.opacity = '0';
-            sideNav.style.transform = 'perspective(600px) rotateX(90deg)';
+            sideNav.style.transform = 'perspective(600px) rotateX(-45deg)';
         }
     });
 }

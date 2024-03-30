@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+div[slot="extra-top"] {
+    display: flex;
+    width: -webkit-fill-available;
+    position: relative;
+    > 	#avatar {
+		display: flex;
+        position: sticky;
+		justify-content: center;
+		align-items: center;
+		margin: 1rem auto;
+        border: 3px solid var(--anon-base);
+        border-radius: 1rem;
+		> img {
+			max-width: 100px;
+            border-radius: 1rem;
+		}
+	}
+}

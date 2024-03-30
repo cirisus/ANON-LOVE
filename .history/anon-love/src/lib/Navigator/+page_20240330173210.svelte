@@ -20,13 +20,28 @@
 
 <style lang="scss">
     #sideNav {
+        z-index: 2;
         position: fixed;
-        right: -200px;
+        right: 0;
         top: 0;
-        width: 200px;
+        width: min(300px,30vw);
         height: 100%;
         background-color: #f5f5f5;
-        transition: right 0.5s;
+        /* Dynamic Calc */
+        transform: rotateY(-30deg);
+        transform-origin: right;
+        scale:0.95;
+        opacity: 0;
+        pointer-events: none;
+        transition: scale .2s;
+        padding: .5rem;
+        box-shadow: 0 0 15px 1px black;
+        border-radius: 1rem;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        &:hover {
+            scale: .95;
+        }
         > a {
             display: flex;
             justify-content: center;
