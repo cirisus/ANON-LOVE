@@ -1,7 +1,7 @@
 <script lang="js">
+	import Loading from "./scripts/loading.js";
 	import Behavior from "./scripts/common.js";
 	import Navigator from '../Components/Navigator/+page.svelte';
-	import Loader from '../Components/Loader/+page.svelte';
 
 	let sideNavigator = [//navigator stack
 		{ href: '/home', text: 'Home' },
@@ -10,7 +10,6 @@
 </script>
 
 <body>
-	<Loader />
 	<h1>Home page</h1>
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">

@@ -5,7 +5,6 @@
 
 	--anon-base: rgb(255,136,153);
 	--anon-light: rgb(253, 195, 195);
-	--anon-faint: rgb(255, 221, 221);
 
 	--tomori-base: rgb(119,187,221);
 	--tomori-light: rgb(177, 210, 243);
@@ -30,7 +29,7 @@ html, body {
 }
 body {
 	color: #333;
-	background-color: var(--anon-faint);
+	background-color: var(--anon-light);
 	margin: 0;
 	padding: 8px;
 	box-sizing: border-box;
