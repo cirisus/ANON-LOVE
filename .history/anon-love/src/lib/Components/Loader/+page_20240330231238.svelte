@@ -1,4 +1,5 @@
 <script>
+	import { transform } from 'svelte-preprocess/dist/autoProcess';
     import { onMount } from 'svelte';
     import { updateProgress, destroyLoader } from './scripts/loader.js';
     let progress = 0;
@@ -12,12 +13,18 @@
         });
 
         window.addEventListener('load', function() {
-            updateProgress(100, (newProgress) => {
+            updateProgress(70, (newProgress) => {
                 progress = newProgress;
-                if (newProgress === 100) {
+                setTimeout(() => {
                     destroyLoader();
                     isLoading = false;
-                }
+                }, 500);
+            });
+        });
+
+        window.addEventListener('beforeunload', function() {
+            updateProgress(100, (newProgress) => {
+                progress = newProgress;
             });
         });
     });
@@ -26,8 +33,8 @@
 {#if isLoading}
 <div class="loader">
 <div class="progress-bar-container">
-    <div class="progress-bar" data-pos="left"></div>
-    <div class="progress-bar" data-pos="right"></div>
+    <div class="progress-bar left" style="transform: scaleX({progress / 100});"></div>
+    <div class="progress-bar right" style="transform: scaleX({progress / 100});"></div>
     <div class="progress-text">{progress}%</div>
 </div>
 </div>
@@ -53,49 +60,30 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
-        height: 15px;
-        background-color: rgb(from var(--anon-faint) r g b / 75%);
+        height: 10px;
+        background-color: #f3f3f3;
+        overflow: hidden;
         display: flex;
         justify-content: space-between;
-        box-shadow: 0 0 10px 1px rgb(from var(--mygo-reverse) r g b / 50%);
-        -webkit-backdrop-filter: blur(5px);
-        backdrop-filter: blur(5px);
     }
 
     .progress-bar {
         height: 100%;
-        position: relative;
-        background-color: var(--mygo);
-        background-image: url(/anon-love/public/asset/progress_bg.png);
-        background-size: contain;
-        transition: clippath 75ms;
-        transition-delay: -75ms;
-        width: 100%;
-        &[data-pos="left"] {
-            transform-origin: left;
-        }
-        &[data-pos="right"] {
+        background-color: #3498db;
+        transition: transform 0.5s;
+        .left {
             transform-origin: right;
         }
-        &::before {
-            content: "";
-            display: flex;
-            width: var(--shadow-width);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            box-shadow: inset 0 0 10px var(--anon-light);
-            z-index: 1;
+        .right {
+            transform-origin: right;
         }
     }
-.progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2rem;
-    color: var(--anon-base);
-    text-shadow: 0 0 7px var(--anon-light);
-}
+
+    .progress-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+    }
 </style>

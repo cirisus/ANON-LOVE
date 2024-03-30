@@ -14,9 +14,11 @@
         window.addEventListener('load', function() {
             updateProgress(100, (newProgress) => {
                 progress = newProgress;
-                if (newProgress === 100) {
-                    destroyLoader();
-                    isLoading = false;
+                if (newProgress === 1000) {
+                    setTimeout(() => {
+                        destroyLoader();
+                        isLoading = false;
+                    }, 500);
                 }
             });
         });
@@ -64,7 +66,6 @@
 
     .progress-bar {
         height: 100%;
-        position: relative;
         background-color: var(--mygo);
         background-image: url(/anon-love/public/asset/progress_bg.png);
         background-size: contain;
@@ -76,17 +77,6 @@
         }
         &[data-pos="right"] {
             transform-origin: right;
-        }
-        &::before {
-            content: "";
-            display: flex;
-            width: var(--shadow-width);
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            box-shadow: inset 0 0 10px var(--anon-light);
-            z-index: 1;
         }
     }
 .progress-text {

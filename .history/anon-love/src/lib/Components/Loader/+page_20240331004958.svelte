@@ -15,8 +15,10 @@
             updateProgress(100, (newProgress) => {
                 progress = newProgress;
                 if (newProgress === 100) {
-                    destroyLoader();
-                    isLoading = false;
+                    setTimeout(() => {
+                        destroyLoader();
+                        isLoading = false;
+                    }, 500);
                 }
             });
         });
