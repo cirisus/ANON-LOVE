@@ -71,16 +71,11 @@
         background-color: transparent;
         width: 0;
         z-index: 0;
-        transition-property: width;
-        transition-duration: 0.5s;
-        box-shadow: 0 0 4px var(--anon-faint),1px 0 3px 0 var(--anon-base),inset 0 0 15px var(--anon-light);
+        box-shadow: 0 0 4px var(--anon-faint),inset 0 0 10px var(--anon-light);
         &[data-pos="mid"] {
             width: 100%;
             box-shadow: none;
             background-color: rgb(from var(--anon-faint) r g b / 75%);
-        }
-        &[data-pos="right"] {
-            box-shadow: 0 0 4px var(--anon-faint),1px 0 3px 0 var(--anon-base),inset 0 0 15px var(--anon-light);
         }
     }
 .progress-text {

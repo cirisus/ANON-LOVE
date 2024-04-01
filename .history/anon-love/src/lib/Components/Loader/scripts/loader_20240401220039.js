@@ -25,33 +25,38 @@ export function updateProgress(newProgress, callback) {
         incrementProgress();
     }, currentProgress < 30 ? 10 : 7);
 
-    function incrementProgress() {
-        if (currentProgress >= 100) {
-            return;
+    function incrementProgress(timestamp) {
+        if (!startTime) {
+            startTime = timestamp;
         }
-        currentProgress++;
-        progressText.textContent = `${currentProgress}%`;
-        if([30, 70, 100].includes(currentProgress)) {
-        progressBars.forEach((progressBar, index) => {
-            let relativeWidth;
-            let transitionDuration;
-            if (index === 1) {
-                relativeWidth = `${100 - currentProgress}vw`;
-            } else {
-                relativeWidth = `${currentProgress / 2}vw`;
+
+        const elapsed = timestamp - startTime;
+
+        if (elapsed > (currentProgress < 30 ? 10 : 7)) {
+            if (currentProgress >= newProgress && newProgress < 100) {
+                return;
             }
-            if (currentProgress === 30) {
-                transitionDuration = '.3s';
-            } else {
-                transitionDuration = '.75s';
+            if (currentProgress >= 100) {
+                callback && callback(currentProgress);
+                return;
             }
-            progressBar.style.width = relativeWidth;
-            progressBar.style.transitionDuration = transitionDuration;
-        });
-    }
+            currentProgress++;
+            progressText.textContent = `${currentProgress}%`;
+            progressBars.forEach((progressBar, index) => {
+                let relativeWidth;
+                if (index === 1) {
+                    relativeWidth = `${100 - currentProgress}vw`;
+                } else {
+                    relativeWidth = `${currentProgress / 2}vw`;
+                }
+                progressBar.style.width = relativeWidth;
+            });
+            startTime = timestamp;
+        }
+
+        requestAnimationFrame(incrementProgress);
     }
 }
-
 export function destroyLoader() {
     const loader = document.querySelector('.loader');
     if (loader) {
@@ -72,4 +77,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2500);
+}, 2000);

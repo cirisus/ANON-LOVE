@@ -6,7 +6,8 @@ export function updateProgress(newProgress, callback) {
         return;
     }
 
-    let currentProgress = parseInt(progressText.textContent);
+    let currentProgress = parseFloat(progressText.textContent);
+    let increment = 0.5;  //incre-granularity
     let interval = setInterval(() => {
         if (currentProgress > newProgress) {
             clearInterval(interval);
@@ -29,24 +30,17 @@ export function updateProgress(newProgress, callback) {
         if (currentProgress >= 100) {
             return;
         }
-        currentProgress++;
-        progressText.textContent = `${currentProgress}%`;
-        if([30, 70, 100].includes(currentProgress)) {
+        currentProgress += increment;
+        progressText.textContent = `${Math.round(currentProgress)}%`;
+        while([30, 70, 100].includes(currentProgress)) {
         progressBars.forEach((progressBar, index) => {
             let relativeWidth;
-            let transitionDuration;
             if (index === 1) {
-                relativeWidth = `${100 - currentProgress}vw`;
+                relativeWidth = `${100 - Math.round(currentProgress)}vw`;
             } else {
-                relativeWidth = `${currentProgress / 2}vw`;
-            }
-            if (currentProgress === 30) {
-                transitionDuration = '.3s';
-            } else {
-                transitionDuration = '.75s';
+                relativeWidth = `${Math.round(currentProgress / 2)}vw`;
             }
             progressBar.style.width = relativeWidth;
-            progressBar.style.transitionDuration = transitionDuration;
         });
     }
     }
@@ -72,4 +66,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2500);
+}, 2000);
