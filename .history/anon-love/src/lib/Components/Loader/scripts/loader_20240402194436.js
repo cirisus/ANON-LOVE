@@ -52,6 +52,13 @@ export function updateProgress(newProgress, callback) {
     }
 }
 
+export function destroyLoader() {
+    const loader = document.querySelector('#loader');
+    if (loader) {
+        loader.parentNode.removeChild(loader);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     updateProgress(30);
 });

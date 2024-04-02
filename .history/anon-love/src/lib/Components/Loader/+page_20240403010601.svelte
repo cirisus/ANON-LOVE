@@ -5,7 +5,7 @@
     let progress = 0;
     let isLoading = true;
 
-    function smeltingBlur({ duration }) {
+    function smeltingBlur(_, { duration }) {
         return {
             duration,
             css: t => `
@@ -14,7 +14,7 @@
             `
         };
     }
-    function smeltingBlurReverse({ duration }) {
+    function smeltingBlurReverse(_, { duration }) {
         return {
             duration,
             css: t => `
@@ -23,7 +23,7 @@
             `
         };
     }
-    function smeltingOpacity({ duration }) {
+    function smeltingOpacity(_, { duration }) {
         return {
             duration,
             css: t => `
@@ -39,16 +39,16 @@
 </script>
 
 {#if isLoading}
-<div id="loader" outro:fade="{smeltingBlur({duration: 2000})}">
-    <div class="progress-bar-container" outro:fade="{smeltingOpacity({duration: 1000})}">
-        <div class="progress-bar" data-pos="left" outro="{smeltingBlurReverse({duration: 2000})}"></div>
-        <div class="progress-bar" data-pos="mid" outro="{smeltingBlurReverse({duration: 2000})}"></div>
-        <div class="progress-bar" data-pos="right" outro="{smeltingBlurReverse({duration: 2000})}"></div>
+<div id="loader" outro:fade="{smeltingBlur({duration: 2000, delay: 1500})}">
+    <div class="progress-bar-container" outro:fade="{smeltingOpacity({duration: 1000, delay: 500})}">
+        <div class="progress-bar" data-pos="left" outro:fade="{smeltingBlurReverse({duration: 1500})}"></div>
+        <div class="progress-bar" data-pos="mid" outro:fade="{smeltingBlurReverse({duration: 1500})}"></div>
+        <div class="progress-bar" data-pos="right" outro:fade="{smeltingBlurReverse({duration: 1500})}"></div>
         <div class="progress-text">{progress}%</div>
     </div>
-    <div id="open-effects" outro:fade="{smeltingBlur({duration: 2000})}">
-        <div class="anon-signature" outro="{smeltingBlurReverse({duration: 2000})}"></div>
-        <div class="anon-sprite" outro="{smeltingBlurReverse({duration: 2000})}"></div>
+    <div id="open-effects" outro:fade="{smeltingBlur({duration: 2000, delay: 1500})}">
+        <div class="anon-signature" outro:fade="{smeltingBlurReverse({duration: 1500})}"></div>
+        <div class="anon-sprite" outro:fade="{smeltingBlurReverse({duration: 1500})}"></div>
     </div>
 </div>
 {/if}

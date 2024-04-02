@@ -1,4 +1,4 @@
-export function updateProgress(newProgress, callback) {
+export function updateProgress(newProgress) {
     const progressBars = document.querySelectorAll('.progress-bar');
     const progressText = document.querySelector('.progress-text');
 
@@ -10,9 +10,6 @@ export function updateProgress(newProgress, callback) {
     let interval = setInterval(() => {
         if (currentProgress > newProgress) {
             clearInterval(interval);
-            if (newProgress === 100) {
-                callback && callback(currentProgress);
-            }
             return;
         }
         if (currentProgress === 30 || currentProgress === 70) {
@@ -59,10 +56,3 @@ document.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', function() {
     updateProgress(70);
 });
-window.addEventListener('beforeunload', function() {
-    updateProgress(100,destroyLoader);
-});
-
-//setTimeout(function() {
-//    destroyLoader();
-//}, 6500);
