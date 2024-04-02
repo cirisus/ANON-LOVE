@@ -14,7 +14,7 @@
         window.addEventListener('load', function() {
             updateProgress(100, (newProgress) => {
                 progress = newProgress;
-                if (newProgress === 100) {
+                if (newProgress === 1000) {
                     destroyLoader();
                     isLoading = false;
                 }
@@ -41,11 +41,10 @@
         top: 0;
         width: 100%;
         height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         justify-content: center;
         align-items: center;
-        -webkit-backdrop-filter: blur(1rem);
-        backdrop-filter: blur(1rem);
         z-index: 9999;
     }
 
@@ -60,7 +59,7 @@
         background-size: contain;
         display: flex;
         justify-content: space-between;
-        box-shadow: 0 0 10px 1px rgb(from var(--mygo-reverse) r g b / 30%);
+        box-shadow: 0 0 10px 1px rgb(from var(--mygo-reverse) r g b / 50%);
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
     }
@@ -71,16 +70,15 @@
         background-color: transparent;
         width: 0;
         z-index: 0;
-        transition-property: width;
-        transition-duration: 0.5s;
-        box-shadow: 0 0 4px var(--anon-faint),1px 0 3px 0 var(--anon-base),inset 0 0 15px var(--anon-light);
+        &[data-pos="left"] {
+            transform-origin: left;
+        }
         &[data-pos="mid"] {
             width: 100%;
-            box-shadow: none;
             background-color: rgb(from var(--anon-faint) r g b / 75%);
         }
         &[data-pos="right"] {
-            box-shadow: 0 0 4px var(--anon-faint),1px 0 3px 0 var(--anon-base),inset 0 0 15px var(--anon-light);
+            transform-origin: right;
         }
     }
 .progress-text {

@@ -41,7 +41,7 @@ export function updateProgress(newProgress, callback) {
                 relativeWidth = `${currentProgress / 2}vw`;
             }
             if (currentProgress === 30) {
-                transitionDuration = '.3s';
+                transitionDuration = '.5s';
             } else {
                 transitionDuration = '.75s';
             }
@@ -72,4 +72,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2500);
+}, 3000);

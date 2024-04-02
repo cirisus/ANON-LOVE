@@ -34,19 +34,12 @@ export function updateProgress(newProgress, callback) {
         if([30, 70, 100].includes(currentProgress)) {
         progressBars.forEach((progressBar, index) => {
             let relativeWidth;
-            let transitionDuration;
             if (index === 1) {
                 relativeWidth = `${100 - currentProgress}vw`;
             } else {
                 relativeWidth = `${currentProgress / 2}vw`;
             }
-            if (currentProgress === 30) {
-                transitionDuration = '.3s';
-            } else {
-                transitionDuration = '.75s';
-            }
             progressBar.style.width = relativeWidth;
-            progressBar.style.transitionDuration = transitionDuration;
         });
     }
     }
@@ -72,4 +65,4 @@ window.addEventListener('beforeunload', function() {
 
 setTimeout(function() {
     destroyLoader();
-}, 2500);
+}, 2000);

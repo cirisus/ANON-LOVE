@@ -71,8 +71,7 @@
         background-color: transparent;
         width: 0;
         z-index: 0;
-        transition-property: width;
-        transition-duration: 0.5s;
+        transition: width 1s;
         box-shadow: 0 0 4px var(--anon-faint),1px 0 3px 0 var(--anon-base),inset 0 0 15px var(--anon-light);
         &[data-pos="mid"] {
             width: 100%;
