@@ -16,7 +16,7 @@
         <div class="progress-bar" data-pos="left"></div>
         <div class="progress-bar" data-pos="mid"></div>
         <div class="progress-bar" data-pos="right"></div>
-        <div class="progress-text"><span class="progress-percentage">{progress}</span></div>
+        <div class="progress-text"><span class="pointer">666{progress}</span></div>
     </div>
     <div id="open-effects">
         <div class="anon-signature"></div>
@@ -85,6 +85,10 @@
             font-size: 4rem;
             color: var(--anon-base);
             text-shadow: 0 0 7px var(--anon-light);
+            &::first-letter {
+                display: inline-block;
+                font-size: 6rem;
+            }
         }
     }
     .anon-signature {

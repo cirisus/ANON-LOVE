@@ -16,7 +16,7 @@
         <div class="progress-bar" data-pos="left"></div>
         <div class="progress-bar" data-pos="mid"></div>
         <div class="progress-bar" data-pos="right"></div>
-        <div class="progress-text"><span class="progress-percentage">{progress}</span></div>
+        <div class="progress-text">{progress}%</div>
     </div>
     <div id="open-effects">
         <div class="anon-signature"></div>
@@ -74,15 +74,12 @@
             }
         }
         > .progress-text {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-family: 'Meglona_italic', serif;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 4rem;
+            font-size: 2rem;
             color: var(--anon-base);
             text-shadow: 0 0 7px var(--anon-light);
         }

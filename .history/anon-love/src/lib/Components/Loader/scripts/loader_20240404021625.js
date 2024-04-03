@@ -61,8 +61,8 @@ export function destroyLoader() {
                 { opacity: 1, backdropFilter: 'blur(1rem)'},
                 { opacity: 0, backdropFilter: 'blur(0)'}
             ], {
-                duration: 1500,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                duration: 1000,
+                easing: 'fast-out-slow-in',
                 fill: 'forwards'
             });
             fadeOutAnimation.finished.then(() => {

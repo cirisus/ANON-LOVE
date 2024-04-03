@@ -62,7 +62,7 @@ export function destroyLoader() {
                 { opacity: 0, backdropFilter: 'blur(0)'}
             ], {
                 duration: 1500,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                easing: 'fast-out-slow-in',
                 fill: 'forwards'
             });
             fadeOutAnimation.finished.then(() => {
