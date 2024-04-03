@@ -1,6 +1,6 @@
 export function updateProgress(newProgress, callback) {
     const progressBars = document.querySelectorAll('.progress-bar');
-    const progressText = document.querySelector('.progress-percentage');
+    const progressText = document.querySelector('.progress-text');
 
     if (!progressBars.length || !progressText) {
         return;
@@ -30,7 +30,15 @@ export function updateProgress(newProgress, callback) {
             return;
         }
         currentProgress++;
-        progressText.textContent = `${currentProgress}`;
+        let percentageSpan = document.createElement('span');
+        percentageSpan.textContent = `${currentProgress}`;
+        progressText.innerHTML = '';
+        progressText.appendChild(percentageSpan);
+
+        let span = document.createElement('span');
+        span.textContent = `${currentProgress}`;
+        progressText.innerHTML = '';
+        progressText.appendChild(span);
         if([30, 70, 100].includes(currentProgress)) {
         progressBars.forEach((progressBar, index) => {
             let relativeWidth;
@@ -58,11 +66,10 @@ export function destroyLoader() {
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
         Promise.all(allAnimations.map(animation => animation.finished)).then(() => {
             const fadeOutAnimation = loader.animate([
-                { opacity: 1, backdropFilter: 'blur(1rem)'},
-                { opacity: 0, backdropFilter: 'blur(0)'}
+                { opacity: 1 },
+                { opacity: 1 }
             ], {
-                duration: 1500,
-                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                duration: 1000000,
                 fill: 'forwards'
             });
             fadeOutAnimation.finished.then(() => {

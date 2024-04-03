@@ -85,6 +85,10 @@
             font-size: 4rem;
             color: var(--anon-base);
             text-shadow: 0 0 7px var(--anon-light);
+            > span::first-letter {
+                display: inline-block;
+                font-size: 6rem;
+            }
         }
     }
     .anon-signature {

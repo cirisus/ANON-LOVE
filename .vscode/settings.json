@@ -1,0 +1,18 @@
+{
+    "editor.hover.enabled": true,
+    "editor.hover.delay": 500,
+    "editor.hover.sticky": true,
+    "editor.hover.actions": [
+        "editor.action.showHover",
+        "editor.action.goToDeclaration",
+        "editor.action.previewDeclaration",
+        "editor.action.revealDefinition",
+        "editor.action.revealDeclaration",
+        "editor.action.showReferences",
+        "editor.action.showDefinitionPreviewHover",
+        "editor.action.showImplementationPreviewHover",
+        "editor.action.showTypeDefinitionPreviewHover",
+        "editor.action.showInlineRenamePreviewHover",
+        "editor.action.showParameterHints"
+    ]
+}
