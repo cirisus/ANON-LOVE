@@ -1,6 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import { updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
     let progress = 0;
     let isLoading = true;

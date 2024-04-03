@@ -3,7 +3,7 @@
     import { updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
     let progress = 0;
-    let isLoading = true;
+    let isLoading = false;
 
     function smeltingBlur({ duration }) {
         return {
@@ -32,6 +32,7 @@
         };
     }
     onMount(async () => {
+        isLoading = true;
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
         isLoading = false;

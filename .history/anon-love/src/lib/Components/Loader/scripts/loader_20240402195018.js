@@ -52,6 +52,16 @@ export function updateProgress(newProgress, callback) {
     }
 }
 
+export function destroyLoader() {
+    const loader = document.querySelector('#loader');
+    if (loader) {
+        loader.style.animation = 'blur 1s forwards, fadeOut 2s forwards';
+        loader.addEventListener('animationend', () => {
+            loader.parentNode.removeChild(loader);
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     updateProgress(30);
 });

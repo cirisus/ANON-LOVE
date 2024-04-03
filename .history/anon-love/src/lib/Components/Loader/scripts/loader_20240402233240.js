@@ -52,6 +52,24 @@ export function updateProgress(newProgress, callback) {
     }
 }
 
+export function destroyLoader() {
+    const loader = document.querySelector('#loader');
+    if (loader) {
+        loader.style.animation = 'blur 1s forwards, fadeOut 2s forwards';
+        // 强制浏览器重新计算样式，确保动画立即开始
+        void loader.offsetWidth;
+        loader.addEventListener('animationend', () => {
+            loader.parentNode.removeChild(loader);
+        });
+        // 添加一个定时器作为备用，以确保加载器在一定时间后被销毁
+        setTimeout(() => {
+            if (loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+            }
+        }, 3000);  // 这里的时间应该稍微长于动画的总时间
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     updateProgress(30);
 });

@@ -6,14 +6,21 @@
     let isLoading = true;
 
     function smeltingBlur({ duration }) {
-        return {
-            duration,
-            css: t => `
+    return {
+        duration,
+        css: (t, u) => {
+            if (u === 0) {
+                console.log('smeltingBlur outro animation started');
+            } else if (u === 1) {
+                console.log('smeltingBlur outro animation ended');
+            }
+            return `
                 backdrop-filter: blur(${(1-t)*10}rem);
                 -webkit-backdrop-filter: blur(${(1-t)*10}rem);
-            `
-        };
-    }
+            `;
+        }
+    };
+}
     function smeltingBlurReverse({ duration }) {
         return {
             duration,
