@@ -1,0 +1,33 @@
+<script>
+    import { onMount } from 'svelte';
+    import { destroyLoader ,updateProgress } from './scripts/loader.js';
+    import { loadAnimation } from './scripts/lottie.js';
+    let progress = 0;
+
+    onMount(async () => {
+        const container = document.querySelector('.anon-signature');
+        await loadAnimation(container);
+        const tip = document.querySelector('.tip');
+        tip.style.setProperty('--clip-text', 'sweepText .3s cubic-bezier(.4,0,.6,1) forwards');
+        tip.style.setProperty('--clip-line', 'sweepLine .3s cubic-bezier(.4,0,.6,1) forwards');
+        destroyLoader();
+    });
+</script>
+
+<div id="loader">
+    <div class="progress-bar-container">
+        <div class="progress-bar" data-pos="left"></div>
+        <div class="progress-bar" data-pos="mid"></div>
+        <div class="progress-bar" data-pos="right"></div>
+        <div class="progress-text"><span class="progress-percentage">{progress}</span></div>
+    </div>
+    <div id="open-effects">
+        <div class="anon-signature"></div>
+        <div class="anon-sprite"></div>
+    </div>
+    <div class="tip" data-info="tip">TAP TO CONTINUE<div class="sweep-line"></div></div>
+</div>
+
+<style lang="scss">
+    @import './style.scss';
+</style>
