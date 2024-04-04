@@ -21,19 +21,20 @@ export async function loadAnimation(container) {
 
         setTimeout(() => {
             animation.setSpeed(0.75);
-            animation.playSegments([0, 223], true);
+            animation.playSegments([0, 225], true);
         }, 500);
 
         const playRestOfAnimation = function() {
             if (animation.isPaused) {
                 animation.setSpeed(0.45);
-                animation.playSegments([224, 315], true);
+                animation.playSegments([226, 315], true);
                 ['click', 'touchstart', 'keydown'].forEach(event => {
                     container.removeEventListener(event, playRestOfAnimation);
                 });
                 resolve();
             }
         };
+
         ['click', 'touchstart', 'keydown'].forEach(event => {
             container.addEventListener(event, playRestOfAnimation);
         });

@@ -58,22 +58,23 @@ export function destroyLoader() {
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
         Promise.all(allAnimations.map(animation => animation.finished)).then(() => {
             const fadeOutAnimation = loader.animate([
-                { opacity: 1, backdropFilter: 'blur(1rem)', filter: 'blur(0)', transform: 'scale(1)'},
-                { opacity: 0.85, backdropFilter: 'blur(0.5rem)', filter: 'blur(0)', transform: 'scale(1)' },
-                { opacity: 0, backdropFilter: 'blur(0)', filter: 'blur(3rem)', transform: 'scale(2)'}
+                { opacity: 1, backdropFilter: 'blur(1rem)'},
+                { opacity: 0, backdropFilter: 'blur(0)'}
             ], {
-                duration: 2000,
-                easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
+                duration: 4500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
                 fill: 'forwards'
             });
+
+            // 在 loader 开始淡出动画的同时改变 .tip-origin、.tip-alt 和 .sweep-line 的属性
             const tipOrigin = document.querySelector('.tip-origin');
             const tipAlt = document.querySelector('.tip-alt');
             const sweepLine = document.querySelector('.sweep-line');
             if (tipOrigin) {
-                tipOrigin.style.clipPath = `polygon(100% 0, 100% 0, 100% 70%, 100% 70%)`;
+                tipOrigin.style.width = '0';
             }
             if (tipAlt) {
-                tipAlt.style.clipPath = `polygon(0 0, 100% 0,100% 70%, 0 70%)`;
+                tipAlt.style.width = '100%';
             }
             if (sweepLine) {
                 sweepLine.style.left = '100%';

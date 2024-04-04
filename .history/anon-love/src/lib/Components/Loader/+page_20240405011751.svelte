@@ -22,7 +22,7 @@
         <div class="anon-signature"></div>
         <div class="anon-sprite"></div>
     </div>
-    <div class="tip" data-info="tip"><div class="tip-alt">Love!~Anonchan</div><div class="sweep-line"></div><div class="tip-origin">TAP TO CONTINUE</div></div>
+    <div class="tip" data-info="tip"><div class="tip-origin">TAP TO CONTINUE</div><div class="sweep-line"></div><div class="tip-alt">Love!~Anonchan</div></div>
 </div>
 
 <style lang="scss">

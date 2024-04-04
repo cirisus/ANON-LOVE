@@ -14,8 +14,15 @@ const preprocessor = sveltePreprocess({
 	  includePaths: ['src'],
 	},
 	postcss: {
-	  plugins: [autoprefixer],
-	},
+		plugins: [
+		  autoprefixer,
+		  cssnano({
+			preset: ['default', {
+			  reduceIdents: false,
+			}],
+		  }),
+		],
+	  },
   });
 
 function serve() {
@@ -45,10 +52,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js',
-		globals: {
-			'lottie-web': 'lottie',
-		},
+		file: 'public/build/bundle.js'
 	},
 	plugins: [
 		svelte({

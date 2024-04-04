@@ -58,9 +58,8 @@ export function destroyLoader() {
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
         Promise.all(allAnimations.map(animation => animation.finished)).then(() => {
             const fadeOutAnimation = loader.animate([
-                { opacity: 1, backdropFilter: 'blur(1rem)', filter: 'blur(0)', transform: 'scale(1)'},
-                { opacity: 0.85, backdropFilter: 'blur(0.5rem)', filter: 'blur(0)', transform: 'scale(1)' },
-                { opacity: 0, backdropFilter: 'blur(0)', filter: 'blur(3rem)', transform: 'scale(2)'}
+                { opacity: 1, backdropFilter: 'blur(1rem)', filter: 'blur(0)',zoom: 1 },
+                { opacity: 0, backdropFilter: 'blur(0)', filter: 'blur(3rem)',zoom: 2 }
             ], {
                 duration: 2000,
                 easing: 'cubic-bezier(0.4, 0, 0.6, 1)',

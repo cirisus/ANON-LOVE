@@ -45,10 +45,10 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js',
-		globals: {
+		file: 'public/build/bundle.js'
+		global: {
 			'lottie-web': 'lottie',
-		},
+		}
 	},
 	plugins: [
 		svelte({

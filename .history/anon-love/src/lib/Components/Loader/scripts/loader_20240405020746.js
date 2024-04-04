@@ -59,7 +59,7 @@ export function destroyLoader() {
         Promise.all(allAnimations.map(animation => animation.finished)).then(() => {
             const fadeOutAnimation = loader.animate([
                 { opacity: 1, backdropFilter: 'blur(1rem)', filter: 'blur(0)', transform: 'scale(1)'},
-                { opacity: 0.85, backdropFilter: 'blur(0.5rem)', filter: 'blur(0)', transform: 'scale(1)' },
+                { opacity: 0.35, backdropFilter: 'blur(0.5rem)', filter: 'blur(0.2rem)', transform: 'scale(1.2)' },
                 { opacity: 0, backdropFilter: 'blur(0)', filter: 'blur(3rem)', transform: 'scale(2)'}
             ], {
                 duration: 2000,

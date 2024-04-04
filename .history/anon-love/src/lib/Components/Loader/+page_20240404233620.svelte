@@ -7,6 +7,9 @@
     onMount(async () => {
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
+        const tip = document.querySelector('.tip');
+        tip.style.setProperty('--clip-text', 'sweepText .3s cubic-bezier(.4,0,.6,1) forwards');
+        tip.style.setProperty('--clip-line', 'sweepLine .3s cubic-bezier(.4,0,.6,1) forwards');
         destroyLoader();
     });
 </script>
@@ -22,7 +25,7 @@
         <div class="anon-signature"></div>
         <div class="anon-sprite"></div>
     </div>
-    <div class="tip" data-info="tip"><div class="tip-alt">Love!~Anonchan</div><div class="sweep-line"></div><div class="tip-origin">TAP TO CONTINUE</div></div>
+    <div class="tip" data-info="tip">TAP TO CONTINUE<div class="sweep-line"></div></div>
 </div>
 
 <style lang="scss">

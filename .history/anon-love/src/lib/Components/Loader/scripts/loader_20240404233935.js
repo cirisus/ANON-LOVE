@@ -54,30 +54,20 @@ export function updateProgress(newProgress, callback) {
 export function destroyLoader() {
     const loader = document.querySelector('#loader');
     if (loader) {
+        const tip = document.querySelector('.tip');
+        tip.style.setProperty('--clip-text', 'sweepText .3s cubic-bezier(.4,0,.6,1) forwards');
+        tip.style.setProperty('--clip-line', 'sweepLine .3s cubic-bezier(.4,0,.6,1) forwards');
         const descendants = loader.querySelectorAll('*');
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
         Promise.all(allAnimations.map(animation => animation.finished)).then(() => {
             const fadeOutAnimation = loader.animate([
-                { opacity: 1, backdropFilter: 'blur(1rem)', filter: 'blur(0)', transform: 'scale(1)'},
-                { opacity: 0.85, backdropFilter: 'blur(0.5rem)', filter: 'blur(0)', transform: 'scale(1)' },
-                { opacity: 0, backdropFilter: 'blur(0)', filter: 'blur(3rem)', transform: 'scale(2)'}
+                { opacity: 1, backdropFilter: 'blur(1rem)'},
+                { opacity: 0, backdropFilter: 'blur(0)'}
             ], {
-                duration: 2000,
-                easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
+                duration: 4500,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
                 fill: 'forwards'
             });
-            const tipOrigin = document.querySelector('.tip-origin');
-            const tipAlt = document.querySelector('.tip-alt');
-            const sweepLine = document.querySelector('.sweep-line');
-            if (tipOrigin) {
-                tipOrigin.style.clipPath = `polygon(100% 0, 100% 0, 100% 70%, 100% 70%)`;
-            }
-            if (tipAlt) {
-                tipAlt.style.clipPath = `polygon(0 0, 100% 0,100% 70%, 0 70%)`;
-            }
-            if (sweepLine) {
-                sweepLine.style.left = '100%';
-            }
             fadeOutAnimation.finished.then(() => {
                 loader.remove();
             });

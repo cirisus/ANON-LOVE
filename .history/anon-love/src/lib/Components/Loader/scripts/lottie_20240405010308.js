@@ -21,7 +21,7 @@ export async function loadAnimation(container) {
 
         setTimeout(() => {
             animation.setSpeed(0.75);
-            animation.playSegments([0, 223], true);
+            animation.playSegments([0, 224], true);
         }, 500);
 
         const playRestOfAnimation = function() {

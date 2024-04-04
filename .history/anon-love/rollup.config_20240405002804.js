@@ -7,6 +7,7 @@ import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 
 const production = !process.env.ROLLUP_WATCH;
 const preprocessor = sveltePreprocess({
@@ -14,8 +15,15 @@ const preprocessor = sveltePreprocess({
 	  includePaths: ['src'],
 	},
 	postcss: {
-	  plugins: [autoprefixer],
-	},
+		plugins: [
+		  autoprefixer,
+		  cssnano({
+			preset: ['default', {
+			  reduceIdents: false,
+			}],
+		  }),
+		],
+	  },
   });
 
 function serve() {
@@ -45,10 +53,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js',
-		globals: {
-			'lottie-web': 'lottie',
-		},
+		file: 'public/build/bundle.js'
 	},
 	plugins: [
 		svelte({
