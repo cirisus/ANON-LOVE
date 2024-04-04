@@ -7,14 +7,7 @@
     onMount(async () => {
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
-        const listener = function() {
-            destroyLoader();
-        };
-        const events = ['click', 'keydown', 'touchstart'];
-        events.forEach(event => document.addEventListener(event, listener));
-        return () => {
-            events.forEach(event => document.removeEventListener(event, listener));
-        };
+        destroyLoader();
     });
 </script>
 

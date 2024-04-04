@@ -7,14 +7,7 @@
     onMount(async () => {
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
-        const listener = function() {
-            destroyLoader();
-        };
-        const events = ['click', 'keydown', 'touchstart'];
-        events.forEach(event => document.addEventListener(event, listener));
-        return () => {
-            events.forEach(event => document.removeEventListener(event, listener));
-        };
+        destroyLoader();
     });
 </script>
 
@@ -33,11 +26,8 @@
 
 <style lang="scss">
 @keyframes cutProgressBar {to {width: 0;}}
-@keyframes leftInText {from {transform: translate(-50%, -35%);} to {transform: translate(-150%, -35%);}}
-@keyframes leftInSprite {from {right: -70%;} to {right: -50%;}}
+@keyframes leftIn {from {transform: translate(-50%, -35%);} to {transform: translate(-150%, -35%);}}
 @keyframes fade {from {opacity: 1;} to {opacity: 0;}}
-@keyframes blurBold {from {filter: blur(0);} to {filter: blur(1rem);}}
-@keyframes blurThin {from {filter: blur(0);} to {filter: blur(6px);}}
     #loader, #open-effects {
         position: fixed;
         left: 0;
@@ -76,7 +66,6 @@
             transition-property: width;
             transition-duration: 0.5s;
             box-shadow: 0 0 4px var(--anon-faint),1px 0 3px 0 var(--anon-base),inset 0 0 15px var(--anon-light);
-            animation: blurThin .2s ease 2s 1 forwards;
             &[data-pos="mid"] {
                 width: 100%;
                 box-shadow: none;
@@ -98,7 +87,7 @@
             font-size: 4rem;
             color: var(--anon-base);
             text-shadow: 0 0 7px var(--anon-light);
-            animation: leftInText .25s ease 2s 1 forwards, fade .25s ease 2.5s 1 forwards, blurBold .25s ease 2s 1 forwards;
+            animation: leftIn .3s ease 2s 1 forwards, fade .3s ease 2.5s 1 forwards;
         }
     }
     .anon-signature {
@@ -111,7 +100,7 @@
     .anon-sprite {
         position: absolute;
         display: flex;
-        bottom: -10%;
+        top: 20%;
         right: -100%;
         width: 80%;
         height: 100%;
@@ -120,6 +109,6 @@
         background-image: url(/anon-love/public/asset/chara_anon.png);
         background-repeat: no-repeat;
         background-size: contain;
-        animation: leftInSprite .5s cubic-bezier(.4,0,.6,1) 2.5s 1 forwards, fade .4s cubic-bezier(.4,0,.6,1) 2.75s 1 reverse forwards, blurThin .4s cubic-bezier(.4,0,.6,1) 2.75s 1 reverse forwards;
+        animation: leftIn .4s cubic-bezier(.4,0,.6,1) 2s 1 forwards, fade .4s cubic-bezier(.4,0,.6,1) 2.5s 1 reverse forwards;
     }
 </style>

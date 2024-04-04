@@ -7,14 +7,7 @@
     onMount(async () => {
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
-        const listener = function() {
-            destroyLoader();
-        };
-        const events = ['click', 'keydown', 'touchstart'];
-        events.forEach(event => document.addEventListener(event, listener));
-        return () => {
-            events.forEach(event => document.removeEventListener(event, listener));
-        };
+        destroyLoader();
     });
 </script>
 
@@ -34,7 +27,7 @@
 <style lang="scss">
 @keyframes cutProgressBar {to {width: 0;}}
 @keyframes leftInText {from {transform: translate(-50%, -35%);} to {transform: translate(-150%, -35%);}}
-@keyframes leftInSprite {from {right: -70%;} to {right: -50%;}}
+@keyframes leftInSprite {from {right: -100%;} to {right: 0;}}
 @keyframes fade {from {opacity: 1;} to {opacity: 0;}}
 @keyframes blurBold {from {filter: blur(0);} to {filter: blur(1rem);}}
 @keyframes blurThin {from {filter: blur(0);} to {filter: blur(6px);}}
@@ -120,6 +113,6 @@
         background-image: url(/anon-love/public/asset/chara_anon.png);
         background-repeat: no-repeat;
         background-size: contain;
-        animation: leftInSprite .5s cubic-bezier(.4,0,.6,1) 2.5s 1 forwards, fade .4s cubic-bezier(.4,0,.6,1) 2.75s 1 reverse forwards, blurThin .4s cubic-bezier(.4,0,.6,1) 2.75s 1 reverse forwards;
+        animation: leftInSprite .4s cubic-bezier(.4,0,.6,1) 2.5s 1 forwards, fade .4s cubic-bezier(.4,0,.6,1) 2.5s 1 reverse forwards, blurThin .4s cubic-bezier(.4,0,.6,1) 2.25s 1 reverse forwards;
     }
 </style>

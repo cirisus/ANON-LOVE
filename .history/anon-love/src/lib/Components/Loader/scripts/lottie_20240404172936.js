@@ -11,6 +11,7 @@ export async function loadAnimation(container) {
         autoplay: false,
         animationData: data
     });
+    animation.setSpeed(0.6);
 
     return new Promise(resolve => {
         animation.addEventListener('complete', () => {
@@ -20,16 +21,14 @@ export async function loadAnimation(container) {
         });
 
         setTimeout(() => {
-            animation.setSpeed(0.75);
-            animation.playSegments([0, 225], true);
+            animation.playSegments([0, 225], true); // 播放到第225帧并暂停
         }, 500);
 
         container.addEventListener('click', function playRestOfAnimation() {
             if (animation.isPaused) {
-                animation.setSpeed(0.35);
-                animation.playSegments([226, 285], true);
-                container.removeEventListener('click', playRestOfAnimation);
-                resolve();
+                animation.playSegments([226, 285], true); // 在点击后从第226帧开始播放
+                container.removeEventListener('click', playRestOfAnimation); // 移除事件监听器
+                resolve(); // 点击时解决 Promise
             }
         });
     });

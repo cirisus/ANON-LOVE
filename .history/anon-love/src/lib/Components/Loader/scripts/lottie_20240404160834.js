@@ -11,26 +11,18 @@ export async function loadAnimation(container) {
         autoplay: false,
         animationData: data
     });
+    animation.setSpeed(0.6);
 
     return new Promise(resolve => {
         animation.addEventListener('complete', () => {
-            if (animation.currentFrame === 285) {
+            container.style.animation = 'fade 0.3s ease forwards, blur 0.3s ease forwards';
+            setTimeout(() => {
                 container.style.display = 'none';
-            }
+            }, 300);
+            resolve();
         });
-
         setTimeout(() => {
-            animation.setSpeed(0.75);
-            animation.playSegments([0, 225], true);
-        }, 500);
-
-        container.addEventListener('click', function playRestOfAnimation() {
-            if (animation.isPaused) {
-                animation.setSpeed(0.35);
-                animation.playSegments([226, 285], true);
-                container.removeEventListener('click', playRestOfAnimation);
-                resolve();
-            }
-        });
+            animation.play();
+        }, 200);
     });
 }

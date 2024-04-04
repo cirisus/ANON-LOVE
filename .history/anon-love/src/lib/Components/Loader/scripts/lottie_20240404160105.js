@@ -11,25 +11,27 @@ export async function loadAnimation(container) {
         autoplay: false,
         animationData: data
     });
+    animation.setSpeed(0.75);
 
     return new Promise(resolve => {
         animation.addEventListener('complete', () => {
-            if (animation.currentFrame === 285) {
-                container.style.display = 'none';
-            }
+            // 添加 CSS 动画
+            container.style.animation = 'fade 0.5s';
+
+            // 在 CSS 动画结束后，删除动画对象
+            container.addEventListener('animationend', () => {
+                animation.destroy();
+                resolve(); // 解决 Promise
+            });
         });
 
         setTimeout(() => {
-            animation.setSpeed(0.75);
-            animation.playSegments([0, 225], true);
-        }, 500);
+            animation.play; // 播放到第225帧并暂停
+        }, 200);
 
-        container.addEventListener('click', function playRestOfAnimation() {
+        container.addEventListener('click', () => {
             if (animation.isPaused) {
-                animation.setSpeed(0.35);
-                animation.playSegments([226, 285], true);
-                container.removeEventListener('click', playRestOfAnimation);
-                resolve();
+                animation.playSegments([226, animation.totalFrames], true); // 在点击后从第226帧开始播放
             }
         });
     });

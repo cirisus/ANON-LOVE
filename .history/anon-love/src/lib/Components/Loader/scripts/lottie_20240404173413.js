@@ -26,7 +26,7 @@ export async function loadAnimation(container) {
 
         container.addEventListener('click', function playRestOfAnimation() {
             if (animation.isPaused) {
-                animation.setSpeed(0.35);
+                animation.setSpeed(0.35); // 设置播放速度为1.0
                 animation.playSegments([226, 285], true);
                 container.removeEventListener('click', playRestOfAnimation);
                 resolve();
