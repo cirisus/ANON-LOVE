@@ -15,7 +15,7 @@
     {#each sideNavigator as group (group.navTitle)}
         <div class="navTitle">{group.navTitle}</div>
         {#each group.links as link (link.href)}
-        <div class="navLink"><a href="{link.href}">{link.text}</a></div>
+            <a href="{link.href}">{link.text}</a>
         {/each}
     {/each}
     <slot name="extra-bottom"></slot>
@@ -43,33 +43,12 @@
         backdrop-filter: blur(5px);
         text-transform: uppercase;
         &:hover {
-            scale: .925;
+            scale: .9;
         }
-        > .navLink {
+        > a {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 2.5rem;
-            border-radius: .5rem;
-            margin: .15rem 0;
-            transition: .3s background-color cubic-bezier(0, 0.6, 0.75, 1);
-            &:hover {
-                background-color: var(--anon-light);
-            }
-            > a {
-                text-decoration: none;
-                color: 333;
-                font-size: 1.2rem;
-                font-weight: bold;
-                font-family: "Overpass", sans-serif;
-                font-variant-caps: small-caps;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
-            }
         }
         > .navTitle {
             font-size: 2rem;
@@ -78,9 +57,6 @@
             margin: 1rem 0;
             font-family: "Overpass", sans-serif;
             font-variant-caps: small-caps;
-            &::first-letter {
-                font-size: 1.1em;
         }
     }
-}
 </style>

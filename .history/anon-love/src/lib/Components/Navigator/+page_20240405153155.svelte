@@ -55,7 +55,7 @@
             margin: .15rem 0;
             transition: .3s background-color cubic-bezier(0, 0.6, 0.75, 1);
             &:hover {
-                background-color: var(--anon-light);
+                background-color: var(--anon-base);
             }
             > a {
                 text-decoration: none;
@@ -64,11 +64,6 @@
                 font-weight: bold;
                 font-family: "Overpass", sans-serif;
                 font-variant-caps: small-caps;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
             }
         }
         > .navTitle {

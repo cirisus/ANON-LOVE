@@ -36,8 +36,6 @@
 </script>
 
 <body>
-	<div id="carousel">
-	</div>
 	<Loader />
 	<h1>Home page</h1>
 	<Navigator {sideNavigator}>
@@ -55,20 +53,6 @@
 
 <style lang="scss">
 	@import './style.scss';
-	#carousel {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: transparent;
-		pointer-events: none;
-		background-image: url(/anon-love/public/asset/anon-1.png);
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-clip: border-box;
-	}
 	div[slot="extra-bottom"] {
 		min-height: 5rem;
 		max-height: 7rem;

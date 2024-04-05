@@ -1,5 +1,5 @@
 export function setupSideNav(sideNav) {
-    const minDistance = 125;
+    const minDistance = 175;
     const maxDistance = 300;
     const minRotateY = -20;
     const maxRotateY = 0;
@@ -18,7 +18,7 @@ export function setupSideNav(sideNav) {
             let normalizedDistance = 1 - (distanceFromRight - minDistance) / (maxDistance - minDistance);
             normalizedDistance = Math.max(0, Math.min(1, normalizedDistance));
             const rotateY = (1 - normalizedDistance) * (maxRotateY - minRotateY);
-            const opacity = minOpacity + normalizedDistance * (maxOpacity - minOpacity) * 1.2;
+            const opacity = minOpacity + normalizedDistance * (maxOpacity - minOpacity);
 
             let translateX;
             if (normalizedDistance < 0.4) {

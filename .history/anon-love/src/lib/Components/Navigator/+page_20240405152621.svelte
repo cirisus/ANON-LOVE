@@ -43,7 +43,7 @@
         backdrop-filter: blur(5px);
         text-transform: uppercase;
         &:hover {
-            scale: .925;
+            scale: .9;
         }
         > .navLink {
             display: flex;
@@ -51,12 +51,8 @@
             align-items: center;
             width: 100%;
             height: 2.5rem;
-            border-radius: .5rem;
-            margin: .15rem 0;
-            transition: .3s background-color cubic-bezier(0, 0.6, 0.75, 1);
-            &:hover {
-                background-color: var(--anon-light);
-            }
+            border-radius: 1rem;
+            margin: .5rem 0;
             > a {
                 text-decoration: none;
                 color: 333;
@@ -64,11 +60,6 @@
                 font-weight: bold;
                 font-family: "Overpass", sans-serif;
                 font-variant-caps: small-caps;
-                display: flex;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
             }
         }
         > .navTitle {
