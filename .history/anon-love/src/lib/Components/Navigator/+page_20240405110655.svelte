@@ -12,11 +12,8 @@
 
 <nav id="sideNav" bind:this={sideNav}>
     <slot name="extra-top"></slot>
-    {#each sideNavigator as group (group.navTitle)}
-        <div class="navTitle">{group.navTitle}</div>
-        {#each group.links as link (link.href)}
-            <a href="{link.href}">{link.text}</a>
-        {/each}
+    {#each sideNavigator as link (link.href)}
+        <a href="{link.href}">{link.text}</a>
     {/each}
     <slot name="extra-bottom"></slot>
 </nav>
@@ -29,7 +26,7 @@
         top: 0;
         width: min(300px,30vw);
         height: 100%;
-        background-color: #f5f5f5a0;
+        background-color: #f5f5f5;
         /* Dynamic Calc */
         transform: rotateY(-30deg);
         transform-origin: right;
@@ -38,10 +35,10 @@
         pointer-events: none;
         transition: scale .4s;
         padding: .5rem;
-        box-shadow: 0 0 15px 1px rgb(233, 152, 166);
+        box-shadow: 0 0 15px 1px black;
         border-radius: 1rem;
+        -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
-        text-transform: capitalize;
         &:hover {
             scale: .9;
         }
@@ -55,7 +52,6 @@
             font-weight: bold;
             text-align: center;
             margin: 1rem 0;
-            font-family: "Overpass", sans-serif;
         }
     }
 </style>

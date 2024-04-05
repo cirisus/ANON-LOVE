@@ -3,28 +3,12 @@
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 
-	let sideNavigator = [
-		{
-			navTitle: 'Internal',
-			links: [
-				{ href: '/home', text: 'Home' },
-				{ href: '/about', text: 'About' },
-				{ href: '/projects', text: 'Projects' },
-				{ href: '/contact', text: 'Contact' }
-			]
-		},
-		{
-			navTitle: 'External',
-			links: [
-				{ href: 'https://bang-dream.bushimo.jp/mygo/', text: `𝗠𝘆𝗚𝗢!!!!! Official`, external: true }
-			]
-		},
-		{
-			navTitle: 'Sponsor',
-			links: [
-				{ href: 'https://cirisus.com', text: `Cirisus's blog`, external: true }
-			]
-		}
+	let sideNavigator = [//navigator stack
+		{ href: '/home', text: 'Home' },
+		{ href: '/about', text: 'About' },
+		{ href: '/projects', text: 'Projects' },
+		{ href: '/contact', text: 'Contact' }
+
 	];
 	function handleClick(event) {
         const link = sideNavigator.find(item => item.text === event.detail.text);
