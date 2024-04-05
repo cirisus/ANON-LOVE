@@ -22,7 +22,7 @@
 		{
 			navTitle: 'Sponsor',
 			links: [
-				{ href: 'https://cirisus.com', text: `Cirisus' blog`, external: true }
+				{ href: 'https://cirisus.com', text: `Cirisus's blog`, external: true }
 			]
 		}
 	];

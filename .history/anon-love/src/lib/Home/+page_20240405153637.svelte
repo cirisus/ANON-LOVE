@@ -22,7 +22,7 @@
 		{
 			navTitle: 'Sponsor',
 			links: [
-				{ href: 'https://cirisus.com', text: `Cirisus' blog`, external: true }
+				{ href: 'https://cirisus.com', text: `Cirisus's blog`, external: true }
 			]
 		}
 	];
@@ -46,7 +46,7 @@
 		</div>
 
 		<div slot="extra-bottom">
-			<span class="contactInfo">Contact me|<a href="mailto:cirisus@outlook.com">Cirisus@outlook.com</a></span>
+			<span class="contactInfo">Contact me through: <a href="mailto:cirisus@outlook.com">Cirisus@outlook.com</a></span>
 		</div>
 	</Navigator>
 </body>
@@ -54,44 +54,13 @@
 <style lang="scss">
 	@import './style.scss';
 	div[slot="extra-bottom"] {
-		min-height: 5rem;
-		max-height: 7rem;
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		font-size: .75rem;
+		font-size: .8rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
 		> span {
 			white-space: nowrap;
-			> a {
-				color: var(--anon-base);
-				text-decoration: none;
-				position: relative;
-				font-weight: 600;
-				transition: all .3s;
-				&:hover {
-					color: #333;
-					font-weight: 300;
-				}
-				&::before {
-					position: absolute;
-					content:"";
-					width: 0;
-					height: 90%;
-					z-index: -1;
-					background-color: var(--anon-light);
-					box-shadow: 0 0 0 0 transparent;
-					transition: all .3s;
-				}
-				&:hover::before {
-					width: 103%;
-					box-shadow: 0 0 1px 1px var(--anon-light);
-					transition: all .3s;
-				}
 		}
 	}
-}
 </style>

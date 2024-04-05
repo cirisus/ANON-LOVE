@@ -22,7 +22,7 @@
 		{
 			navTitle: 'Sponsor',
 			links: [
-				{ href: 'https://cirisus.com', text: `Cirisus' blog`, external: true }
+				{ href: 'https://cirisus.com', text: `Cirisus's blog`, external: true }
 			]
 		}
 	];
@@ -80,14 +80,14 @@
 					position: absolute;
 					content:"";
 					width: 0;
-					height: 90%;
+					height: 100%;
 					z-index: -1;
 					background-color: var(--anon-light);
 					box-shadow: 0 0 0 0 transparent;
 					transition: all .3s;
 				}
 				&:hover::before {
-					width: 103%;
+					width: 100%;
 					box-shadow: 0 0 1px 1px var(--anon-light);
 					transition: all .3s;
 				}
