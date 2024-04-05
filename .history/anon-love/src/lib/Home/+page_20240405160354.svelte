@@ -64,10 +64,6 @@
 		background-color: transparent;
 		pointer-events: none;
 		background-image: url(/anon-love/public/asset/anon-1.png);
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-clip: border-box;
 	}
 	div[slot="extra-bottom"] {
 		min-height: 5rem;
