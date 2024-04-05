@@ -122,15 +122,10 @@
         word-break: keep-all;
         white-space: nowrap;
         transition: all 1s;
-        font-style: italic;
     }
     > .tip-alt {
         clip-path: polygon(0 0, 0 0, 0 70%, 0 70%);
-        font-family: 'Meglona_italic', 'Nagomi_Extralight', serif;
-        > span {
-            font-size: 1.5em;
-            -webkit-text-stroke: 1px;
-        }
+        font-family: 'Meglona_italic', 'Nagomi', serif;
     }
     > .tip-origin {
         clip-path: polygon(0 0,100% 0, 100% 70%, 0 70%);

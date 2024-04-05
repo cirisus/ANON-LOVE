@@ -127,10 +127,6 @@
     > .tip-alt {
         clip-path: polygon(0 0, 0 0, 0 70%, 0 70%);
         font-family: 'Meglona_italic', 'Nagomi_Extralight', serif;
-        > span {
-            font-size: 1.5em;
-            -webkit-text-stroke: 1px;
-        }
     }
     > .tip-origin {
         clip-path: polygon(0 0,100% 0, 100% 70%, 0 70%);

@@ -48,7 +48,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: -webkit-fill-available;
+            width: 100%;
             height: 2.5rem;
             border-radius: .5rem;
             margin: .15rem .75rem;

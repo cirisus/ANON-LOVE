@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { setupSideNav } from './trigger.js';
+    import { createRipple } from './common.js';
 
     export let sideNavigator = [];
     let sideNav;
@@ -15,7 +16,7 @@
     {#each sideNavigator as group (group.navTitle)}
         <div class="navTitle">{group.navTitle}</div>
         {#each group.links as link (link.href)}
-        <div class="navLink"><a href="{link.href}">{link.text}</a></div>
+        <div class="navLink" on:click={createRipple}><a href="{link.href}">{link.text}</a></div>
         {/each}
     {/each}
     <slot name="extra-bottom"></slot>
@@ -82,4 +83,12 @@
         }
     }
 }
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background-color: var(--anon-faint);
+        animation: ripple 0.6s linear;
+        transform: scale(0);
+    }
+    @keyframes ripple {to {transform: scale(2);opacity: 0;}}
 </style>
