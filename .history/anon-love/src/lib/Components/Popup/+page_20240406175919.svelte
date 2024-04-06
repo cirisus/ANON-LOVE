@@ -1,0 +1,52 @@
+<script>
+    import { createEventDispatcher } from 'svelte';
+    import { fade } from 'svelte/transition';
+    import SvelteMarkdown from 'svelte-markdown';  // 导入 SvelteMarkdown
+
+    export let content = '';
+    export let title = '';
+    export let buttonText = '';
+    export let showModal = false;
+
+    const dispatch = createEventDispatcher();
+
+    const toggleModal = () => {
+        showModal = !showModal;
+        dispatch('toggleModal', showModal);
+    };
+</script>
+
+{#if showModal}
+    <div class="overlay" transition:fade={{ duration: 500 }}>
+        <div class="modal" transition:fade={{ duration: 500 }}>
+            <h2>{title}</h2>
+            <SvelteMarkdown source={content} />  <!-- 使用 SvelteMarkdown 渲染 content -->
+            <button on:click={toggleModal}>{buttonText}</button>
+        </div>
+    </div>
+{/if}
+
+<style lang="scss">
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+</style>
