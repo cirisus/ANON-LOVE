@@ -53,7 +53,7 @@ export default {
 	},
 	plugins: [
 		string({
-			include: '../docs/*.md'
+			include: '**/*.md'
 		}),
 		svelte({
 			preprocess: preprocessor,

@@ -52,9 +52,6 @@ export default {
 		},
 	},
 	plugins: [
-		string({
-			include: '../docs/*.md'
-		}),
 		svelte({
 			preprocess: preprocessor,
 			compilerOptions: {
@@ -66,6 +63,9 @@ export default {
 			browser: true,
 			dedupe: ['svelte'],
 			exportConditions: ['svelte']
+		}),
+		string({
+			include: '**/*.md'
 		}),
 		commonjs(),
 		!production && serve(),

@@ -7,7 +7,7 @@ import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import autoprefixer from 'autoprefixer';
-import { string } from 'rollup-plugin-string';
+import string from 'rollup-plugin-string';
 
 const production = !process.env.ROLLUP_WATCH;
 const preprocessor = sveltePreprocess({
@@ -52,9 +52,6 @@ export default {
 		},
 	},
 	plugins: [
-		string({
-			include: '../docs/*.md'
-		}),
 		svelte({
 			preprocess: preprocessor,
 			compilerOptions: {
@@ -66,6 +63,9 @@ export default {
 			browser: true,
 			dedupe: ['svelte'],
 			exportConditions: ['svelte']
+		}),
+		string({
+			include: '**/*.md'
 		}),
 		commonjs(),
 		!production && serve(),

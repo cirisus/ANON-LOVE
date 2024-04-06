@@ -32,7 +32,7 @@
 footer > span {
 	white-space: nowrap;
 	> a {
-		color: var(--anon-vivid);
+		color: rgb(from var(--anon-base) calc(r-50), calc(g-50), calc(b-50));
 		text-decoration: none;
 		position: relative;
 		font-weight: 400;

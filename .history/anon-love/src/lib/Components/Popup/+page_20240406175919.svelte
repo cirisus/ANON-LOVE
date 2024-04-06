@@ -20,7 +20,7 @@
     <div class="overlay" transition:fade={{ duration: 500 }}>
         <div class="modal" transition:fade={{ duration: 500 }}>
             <h2>{title}</h2>
-            <SvelteMarkdown source={content} />
+            <SvelteMarkdown source={content} />  <!-- 使用 SvelteMarkdown 渲染 content -->
             <button on:click={toggleModal}>{buttonText}</button>
         </div>
     </div>

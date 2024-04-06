@@ -6,14 +6,16 @@
 
 	let title = ' CONTENT USAGE SPECIFICATIONS';
 	let buttonText = `I'VE READ IT`;
-	let showModal = false;
-	let content = markdown;
 
-	const handleToggleModal = () => {
-		showModal = !showModal;
-	};
+	let content;
+
+	onMount(() => {
+		content = markdown;
+	});
+	function toggleModal() {
+		Modal.toggleModal();
+	}
 </script>
-
 
 <header>
 	<nav>
@@ -23,16 +25,19 @@
 <main>
 	<slot></slot>
 </main>
+
 <footer>
-	<span class="footer">©2024 ANON-LOVE|<a on:click={handleToggleModal}>CONTENT USAGE SPECIFICATIONS</a></span>
-    <Modal {title} {buttonText} {showModal} {content} on:toggleModal={handleToggleModal} />
+	<span class="footer">©2024 ANON-LOVE|<a href="#footer" on:click={toggleModal}>CONTENT USAGE SPECIFICATIONS</a></span>
+	<Modal {title} {buttonText}>
+		<SvelteMarkdown source={content} />
+	</Modal>
 </footer>
 
 <style lang="scss">
 footer > span {
 	white-space: nowrap;
 	> a {
-		color: var(--anon-vivid);
+		color: var(--anon-base);
 		text-decoration: none;
 		position: relative;
 		font-weight: 400;

@@ -1,7 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
-    import SvelteMarkdown from 'svelte-markdown';  // 导入 SvelteMarkdown
 
     export let content = '';
     export let title = '';
@@ -20,7 +19,7 @@
     <div class="overlay" transition:fade={{ duration: 500 }}>
         <div class="modal" transition:fade={{ duration: 500 }}>
             <h2>{title}</h2>
-            <SvelteMarkdown source={content} />
+            <p>{content}</p>
             <button on:click={toggleModal}>{buttonText}</button>
         </div>
     </div>
