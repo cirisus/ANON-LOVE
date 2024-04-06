@@ -21,11 +21,11 @@
 </header>
 
 <main>
+	<Modal {title} {buttonText} {showModal} {content} on:toggleModal={handleToggleModal} />
 	<slot></slot>
 </main>
 <footer>
 	<span class="footer">©2024 ANON-LOVE|<a on:click={handleToggleModal}>CONTENT USAGE SPECIFICATIONS</a></span>
-    <Modal {title} {buttonText} {showModal} {content} on:toggleModal={handleToggleModal} />
 </footer>
 
 <style lang="scss">
