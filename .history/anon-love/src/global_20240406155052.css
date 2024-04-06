@@ -63,14 +63,13 @@ footer {
 	padding: .0875rem 0;
 	font-weight: bold;
 	overflow: hidden;
-	user-select: none;
 	& span {
 		font-family: "Rajdhani", sans-serif;
 		font-weight: 400;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-size: 0.9rem;
+		font-size: .8rem;
 	}
 }
 /* Universal Labels */
