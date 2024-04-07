@@ -41,7 +41,10 @@
 	box-sizing: border-box;
 }
 ::selection {
-	background-color: var(--anon-light);
+	background-color: var(--anon-vivid);
+}
+*::first-letter::selection {
+	background-color: var(--anon-vivid);
 }
 html, body {
 	position: relative;

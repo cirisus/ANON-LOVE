@@ -1,6 +1,5 @@
 <script lang="js">
 	import { blurSiblingsOfLoader } from "./scripts/common.js";
-	import { onMount } from 'svelte';
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 
@@ -27,7 +26,7 @@
 			]
 		}
 	];
-	onMount(blurSiblingsOfLoader);
+	blurSiblingsOfLoader();
 	function handleClick(event) {
         const link = sideNavigator.find(item => item.text === event.detail.text);
         if (link && link.external) {

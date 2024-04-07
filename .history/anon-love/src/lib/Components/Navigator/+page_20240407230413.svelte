@@ -77,10 +77,11 @@
             margin: 1rem 0;
             font-family: "Overpass", sans-serif;
             font-variant-caps: small-caps;
-            -webkit-userp-select: none;
-            user-select: none;
             &::first-letter {
                 font-size: 1.1em;
+                &::selection {
+                    background-color: var(--anon-light);
+                }
         }
     }
 }
