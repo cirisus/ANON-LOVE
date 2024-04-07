@@ -12,7 +12,7 @@
 
     const dispatch = createEventDispatcher();
 
-    const blur = tweened(12, { duration: 300, easing: cubicOut });
+    const blur = tweened(0, { duration: 300, easing: cubicOut });
 
     const toggleModal = async () => {
         showModal = !showModal;

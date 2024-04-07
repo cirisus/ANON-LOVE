@@ -19,6 +19,7 @@
         dispatch('toggleModal', showModal);
         if (showModal) {
             await blur.set(0);
+            console.log(b);
         } else {
             await blur.set(12);
         }

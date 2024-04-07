@@ -1,9 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
-    import SvelteMarkdown from 'svelte-markdown';
-    import { tweened } from 'svelte/motion';
-    import { cubicOut } from 'svelte/easing';
+    import SvelteMarkdown from 'svelte-markdown';  // 导入 SvelteMarkdown
 
     export let content = '';
     export let title = '';
@@ -12,22 +10,15 @@
 
     const dispatch = createEventDispatcher();
 
-    const blur = tweened(12, { duration: 300, easing: cubicOut });
-
-    const toggleModal = async () => {
+    const toggleModal = () => {
         showModal = !showModal;
         dispatch('toggleModal', showModal);
-        if (showModal) {
-            await blur.set(0);
-        } else {
-            await blur.set(12);
-        }
     };
 </script>
 
 {#if showModal}
-    <div class="overlay" transition:fade={{ duration: 200 }} style="backdrop-filter: blur({$blur}px);">
-        <div class="modal" transition:fade={{ duration: 300 }}>
+    <div class="overlay" transition:fade={{ duration: 500 }}>
+        <div class="modal" transition:fade={{ duration: 500 }}>
             <div class="modal-head">
             <h2>{title}</h2>
             </div>
