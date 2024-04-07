@@ -5,6 +5,7 @@
     import { tweened } from 'svelte/motion';
     import { cubicOut } from 'svelte/easing';
 
+
     export let content = '';
     export let title = '';
     export let buttonText = '';
@@ -12,17 +13,12 @@
 
     const dispatch = createEventDispatcher();
 
-    const blur = tweened(12, { duration: 300, easing: cubicOut });
-
-    const toggleModal = async () => {
+    const toggleModal = () => {
         showModal = !showModal;
         dispatch('toggleModal', showModal);
-        if (showModal) {
-            await blur.set(0);
-        } else {
-            await blur.set(12);
-        }
     };
+
+    const blur = tweened(0, { duration: 300, easing: cubicOut });
 </script>
 
 {#if showModal}
@@ -39,7 +35,13 @@
             </div>
         </div>
     </div>
+{:else}
+    {#await blur.set(0)}
+    {/await}
 {/if}
+
+{#await blur.set(1)}
+{/await}
 
 <style lang="scss">
 .modal {

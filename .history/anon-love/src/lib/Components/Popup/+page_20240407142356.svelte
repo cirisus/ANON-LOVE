@@ -1,9 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     import { fade } from 'svelte/transition';
-    import SvelteMarkdown from 'svelte-markdown';
-    import { tweened } from 'svelte/motion';
-    import { cubicOut } from 'svelte/easing';
+    import SvelteMarkdown from 'svelte-markdown';  // 导入 SvelteMarkdown
 
     export let content = '';
     export let title = '';
@@ -12,22 +10,15 @@
 
     const dispatch = createEventDispatcher();
 
-    const blur = tweened(12, { duration: 300, easing: cubicOut });
-
-    const toggleModal = async () => {
+    const toggleModal = () => {
         showModal = !showModal;
         dispatch('toggleModal', showModal);
-        if (showModal) {
-            await blur.set(0);
-        } else {
-            await blur.set(12);
-        }
     };
 </script>
 
 {#if showModal}
-    <div class="overlay" transition:fade={{ duration: 200 }} style="backdrop-filter: blur({$blur}px);">
-        <div class="modal" transition:fade={{ duration: 300 }}>
+    <div class="overlay" transition:fade={{ duration: 500 }}>
+        <div class="modal" transition:fade={{ duration: 500 }}>
             <div class="modal-head">
             <h2>{title}</h2>
             </div>
@@ -65,7 +56,7 @@
         left: -5px;
         top: 4px;
         transform: rotate(-2.5deg);
-        background-color: rgb(240, 240, 240);
+        background-color: rgb(253,253,253);
         box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.2);
     }
     &::after {
@@ -80,7 +71,6 @@
         background: rgb(253,253,253);
         h2 {
           border-bottom: 2px solid rgb(50, 50, 53);
-          margin-block: 1rem .25rem;
         }
     }
     > .modal-body {
@@ -101,19 +91,14 @@
         }
     }
     > .modal-footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 100%;
         padding: .5rem;
         background: rgb(253,253,253);
         button {
             padding: .5rem 1rem;
-            margin: 0;
             background: rgb(50, 50, 53);
             color: rgb(253,253,253);
             border: none;
-            border: 2px solid rgb(50, 50, 53);
             border-radius: 4px;
             cursor: pointer;
             transition: all .3s;

@@ -12,15 +12,15 @@
 
     const dispatch = createEventDispatcher();
 
-    const blur = tweened(12, { duration: 300, easing: cubicOut });
+    const blur = tweened(0, { duration: 300, easing: cubicOut });
 
     const toggleModal = async () => {
         showModal = !showModal;
         dispatch('toggleModal', showModal);
         if (showModal) {
-            await blur.set(0);
-        } else {
             await blur.set(12);
+        } else {
+            await blur.set(0);
         }
     };
 </script>

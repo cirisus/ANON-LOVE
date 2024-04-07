@@ -22,7 +22,7 @@
 	<slot></slot>
 </main>
 <footer>
-	<span class="footer">©2024 ANON-LOVE|<a href="#" role="button" on:click|preventDefault={handleToggleModal} aria-label="open">CONTENT USAGE SPECIFICATIONS</a></span>
+	<span class="footer">©2024 ANON-LOVE|<a href="#" role="button" on:click|preventDefault={handleToggleModal} on:keydown={handleToggleModal} aria-label="open">CONTENT USAGE SPECIFICATIONS</a></span>
     <Modal {title} {buttonText} {showModal} {content} on:toggleModal={handleToggleModal} />
 </footer>
 
