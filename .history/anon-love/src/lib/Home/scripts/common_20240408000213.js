@@ -1,11 +1,6 @@
-let initialBlur = '10rem';
-let initialScale = 1.7;
-let blurDuration = 1300;
-let scaleDuration = 1550;
-
 function setInitialStyles(sibling) {
-    sibling.style.filter = `blur(${initialBlur})`;
-    sibling.style.transform = `scale(${initialScale})`;
+    sibling.style.filter = 'blur(5px)';
+    sibling.style.transform = 'scale(1.5)';
 }
 
 function applyTransition(sibling) {
@@ -13,11 +8,11 @@ function applyTransition(sibling) {
     function step(timestamp) {
         if (!start) start = timestamp;
         let progress = timestamp - start;
-        let blurValue = Math.max(parseFloat(initialBlur) - parseFloat(initialBlur) * progress / blurDuration, 0);
-        let scaleValue = initialScale - (initialScale - 1) * (1 - Math.pow(1 - progress / scaleDuration, 2));
-        sibling.style.filter = `blur(${blurValue}rem)`;
+        let blurValue = Math.max(5 - 5 * progress / 2000, 0);
+        let scaleValue = Math.max(1.5 - 0.5 * progress / 2500, 1);
+        sibling.style.filter = `blur(${blurValue}px)`;
         sibling.style.transform = `scale(${scaleValue})`;
-        if (progress < Math.max(blurDuration, scaleDuration)) {
+        if (progress < 2500) {
             requestAnimationFrame(step);
         }
     }
@@ -49,13 +44,12 @@ export function blurSiblingsOfLoader() {
                 sibling = sibling.nextSibling;
             }
             ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.removeEventListener(event, handleEvent);
+                loader.removeEventListener(event, handleEvent);
             });
         };
-        setTimeout(() => {
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, handleEvent);
-            });
-        }, 3500);
+
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+            loader.addEventListener(event, handleEvent);
+        });
     }
 }

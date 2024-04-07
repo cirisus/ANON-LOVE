@@ -1,7 +1,7 @@
 let initialBlur = '10rem';
-let initialScale = 1.7;
-let blurDuration = 1300;
-let scaleDuration = 1550;
+let initialScale = 1.5;
+let blurDuration = 1050;
+let scaleDuration = 1300;
 
 function setInitialStyles(sibling) {
     sibling.style.filter = `blur(${initialBlur})`;
@@ -49,13 +49,12 @@ export function blurSiblingsOfLoader() {
                 sibling = sibling.nextSibling;
             }
             ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.removeEventListener(event, handleEvent);
+                loader.removeEventListener(event, handleEvent);
             });
         };
-        setTimeout(() => {
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, handleEvent);
-            });
-        }, 3500);
+
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+            loader.addEventListener(event, handleEvent);
+        });
     }
 }

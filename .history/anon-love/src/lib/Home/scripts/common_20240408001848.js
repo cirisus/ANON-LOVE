@@ -52,10 +52,9 @@ export function blurSiblingsOfLoader() {
                 document.removeEventListener(event, handleEvent);
             });
         };
-        setTimeout(() => {
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, handleEvent);
-            });
-        }, 3500);
+
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+            document.addEventListener(event, handleEvent);
+        });
     }
 }

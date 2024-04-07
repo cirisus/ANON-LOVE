@@ -49,13 +49,12 @@ export function blurSiblingsOfLoader() {
                 sibling = sibling.nextSibling;
             }
             ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.removeEventListener(event, handleEvent);
+                loader.removeEventListener(event, handleEvent);
             });
         };
-        setTimeout(() => {
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, handleEvent);
-            });
-        }, 3500);
+
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+            loader.addEventListener(event, handleEvent);
+        });
     }
 }
