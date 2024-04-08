@@ -1,7 +1,7 @@
 let initialBlur = 150;
 let initialScale = 1.7;
-let blurDuration = 1250;
-let scaleDuration = 1500;
+let blurDuration = 1300;
+let scaleDuration = 1550;
 
 function setInitialStyles(sibling) {
     sibling.style.filter = `blur(${initialBlur}px)`;

@@ -11,6 +11,9 @@ to {filter: blur(0);}
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+:not(#loader, #loader *):not(#root) {
+    will-change: filter, transform;
+}
 div[slot="extra-top"] {
     display: flex;
     width: -webkit-fill-available;

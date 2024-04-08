@@ -1,16 +1,11 @@
 let initialBlur = 150;
 let initialScale = 1.7;
-let blurDuration = 1250;
-let scaleDuration = 1500;
+let blurDuration = 1300;
+let scaleDuration = 1550;
 
 function setInitialStyles(sibling) {
     sibling.style.filter = `blur(${initialBlur}px)`;
     sibling.style.transform = `scale(${initialScale})`;
-}
-
-function removeInitialStyles(sibling) {
-    sibling.style.filter = '';
-    sibling.style.transform = '';
 }
 
 function applyTransition(sibling) {
@@ -21,7 +16,7 @@ function applyTransition(sibling) {
         ],
         {
             duration: blurDuration,
-            easing: 'cubic-bezier(0.71, 0.21, 0.75, 0.97)'
+            easing: 'ease-out'
         }
     );
 
@@ -32,9 +27,14 @@ function applyTransition(sibling) {
         ],
         {
             duration: scaleDuration,
-            easing: 'cubic-bezier(0.71, 0.21, 0.75, 0.97)'
+            easing: 'ease-out'
         }
     );
+
+    Promise.all([blurAnimation.finished, scaleAnimation.finished]).then(() => {
+        sibling.style.filter = '';
+        sibling.style.transform = '';
+    });
 
     return [blurAnimation, scaleAnimation];
 }
@@ -59,7 +59,6 @@ export function blurSiblingsOfLoader() {
             let sibling = loader.parentNode.firstChild;
             while (sibling) {
                 if (sibling.nodeType === 1 && sibling !== loader) {
-                    removeInitialStyles(sibling);
                     applyTransition(sibling);
                 }
                 sibling = sibling.nextSibling;
@@ -68,10 +67,8 @@ export function blurSiblingsOfLoader() {
                 document.removeEventListener(event, handleEvent);
             });
         };
-        setTimeout(() => {
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, handleEvent);
-            });
-        }, 3500);
+        ['click', 'touchstart', 'keydown'].forEach(event => {
+            document.addEventListener(event, handleEvent);
+        });
     }
 }

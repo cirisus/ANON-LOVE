@@ -1,42 +1,27 @@
-let initialBlur = 150;
+let initialBlur = '10rem';
 let initialScale = 1.7;
-let blurDuration = 1250;
-let scaleDuration = 1500;
+let blurDuration = 1300;
+let scaleDuration = 1550;
 
 function setInitialStyles(sibling) {
-    sibling.style.filter = `blur(${initialBlur}px)`;
+    //sibling.style.filter = `blur(${initialBlur})`;
     sibling.style.transform = `scale(${initialScale})`;
 }
 
-function removeInitialStyles(sibling) {
-    sibling.style.filter = '';
-    sibling.style.transform = '';
-}
-
 function applyTransition(sibling) {
-    let blurAnimation = sibling.animate(
-        [
-            { filter: `blur(${initialBlur}px)`, offset: 0 },
-            { filter: 'blur(0px)', offset: 1 }
-        ],
-        {
-            duration: blurDuration,
-            easing: 'cubic-bezier(0.71, 0.21, 0.75, 0.97)'
+    let start = null;
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        let progress = timestamp - start;
+        //let blurValue = Math.max(parseFloat(initialBlur) - parseFloat(initialBlur) * progress / blurDuration, 0);
+        let scaleValue = initialScale - (initialScale - 1) * (1 - Math.pow(1 - progress / scaleDuration, 2));
+        //sibling.style.filter = `blur(${blurValue}rem)`;
+        sibling.style.transform = `scale(${scaleValue})`;
+        if (progress < Math.max(blurDuration, scaleDuration)) {
+            requestAnimationFrame(step);
         }
-    );
-
-    let scaleAnimation = sibling.animate(
-        [
-            { transform: `scale(${initialScale})`, offset: 0 },
-            { transform: 'scale(1)', offset: 1 }
-        ],
-        {
-            duration: scaleDuration,
-            easing: 'cubic-bezier(0.71, 0.21, 0.75, 0.97)'
-        }
-    );
-
-    return [blurAnimation, scaleAnimation];
+    }
+    requestAnimationFrame(step);
 }
 
 function blurAndScaleSiblings(loader) {
@@ -59,7 +44,6 @@ export function blurSiblingsOfLoader() {
             let sibling = loader.parentNode.firstChild;
             while (sibling) {
                 if (sibling.nodeType === 1 && sibling !== loader) {
-                    removeInitialStyles(sibling);
                     applyTransition(sibling);
                 }
                 sibling = sibling.nextSibling;
