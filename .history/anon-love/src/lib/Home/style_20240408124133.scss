@@ -1,0 +1,35 @@
+@keyframes blur {
+from {filter: blur(10rem);}
+to {filter: blur(0);}
+}
+.sibling {
+    animation: blur 1.3s ease-out;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+:not(#loader, #loader *):not(#root) {
+    will-change: filter, transform;
+}
+div[slot="extra-top"] {
+    display: flex;
+    width: -webkit-fill-available;
+    position: relative;
+    > 	#avatar {
+            display: flex;
+            position: sticky;
+            justify-content: center;
+            align-items: center;
+            margin: 1rem auto;
+            border: 5px solid var(--anon-base);
+            border-radius: 1rem;
+            box-shadow: inset 0 0 1px 3px var(--anon-base);
+		> img {
+			max-width: 100px;
+            border-radius: .85rem;
+		}
+	}
+}

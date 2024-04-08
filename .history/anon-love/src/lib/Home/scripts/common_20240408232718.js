@@ -1,7 +1,7 @@
 let initialBlur = 150;
 let initialScale = 1.7;
-let blurDuration = 1250;
-let scaleDuration = 1500;
+let blurDuration = 1450;
+let scaleDuration = 1700;
 
 function setInitialStyles(sibling) {
     sibling.style.filter = `blur(${initialBlur}px)`;
@@ -21,7 +21,7 @@ function applyTransition(sibling) {
         ],
         {
             duration: blurDuration,
-            easing: 'cubic-bezier(0.71, 0.21, 0.75, 0.97)'
+            easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
         }
     );
 
@@ -32,7 +32,7 @@ function applyTransition(sibling) {
         ],
         {
             duration: scaleDuration,
-            easing: 'cubic-bezier(0.71, 0.21, 0.75, 0.97)'
+            easing: 'cubic-bezier(0.4, 0, 0.6, 1)'
         }
     );
 
