@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(1rem) brightness(1.15) saturate(0.5);
+    backdrop-filter: blur(1rem);
     z-index: 9999;
 }
 #open-effects {
@@ -54,20 +54,20 @@
             box-shadow: 0 0 4px var(--anon-faint),1px 0 4px 1px var(--anon-base),inset 0 0 15px var(--anon-light);
         }
     }
-}
-.progress-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Meglona_italic', serif;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -35%);
-    font-size: 4rem;
-    color: var(--anon-base);
-    text-shadow: 0 0 7px var(--anon-light);
-    animation: leftInText .25s ease 2.5s 1 forwards, fade .25s ease 2.5s 1 forwards, blurBold .25s ease 2.35s 1 forwards;
+    > .progress-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Meglona_italic', serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -35%);
+        font-size: 4rem;
+        color: var(--anon-base);
+        text-shadow: 0 0 7px var(--anon-light);
+        animation: leftInText .25s ease 2.5s 1 forwards, fade .25s ease 2.5s 1 forwards, blurBold .25s ease 2.35s 1 forwards;
+    }
 }
 .anon-signature {
     position: fixed;
