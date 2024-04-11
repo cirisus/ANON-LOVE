@@ -7,9 +7,7 @@
     let svgElement;
 
     onMount(async () => {
-        setTimeout(() => {
-            addMouseMoveListener(svgElement);
-        }, 0);
+        addMouseMoveListener(window, svgElement);
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
         destroyLoader();
