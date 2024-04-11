@@ -22,7 +22,7 @@
     </div>
     <div class="progress-text"><span class="progress-percentage">{progress}</span></div>
     <div id="open-effects">
-        <div class="anon-signature" bind:this={svgElement}></div>
+        <div class="anon-signature"></div>
         <!--<div class="anon-sprite"></div>-->
     </div>
     <div class="tip" data-info="tip"><div class="tip-alt">Love!~<span>あのちゃん</span></div><div class="sweep-line"></div><div class="tip-origin">TAP TO CONTINUE</div></div>
