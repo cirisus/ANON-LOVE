@@ -1,4 +1,6 @@
 export function addMouseMoveListener(element) {
+    let centerX = 0;
+    let centerY = 0;
     let originX = 50;
     let originY = 50;
     let targetX = 0;

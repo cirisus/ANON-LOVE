@@ -5,6 +5,7 @@ export function addMouseMoveListener(element) {
     let targetY = 0;
     let currentX = 0;
     let currentY = 0;
+    const lerpFactor = 0;
 
     window.addEventListener('mousemove', function(e) {
         const width = window.innerWidth;
@@ -14,17 +15,17 @@ export function addMouseMoveListener(element) {
         // Modify the transform-origin with lerp
         const targetOriginX = Math.min(Math.max(e.pageX / width, 0.45), 0.55) * 100;
         const targetOriginY = Math.min(Math.max(e.pageY / height, 0.45), 0.55) * 100;
-        originX += (targetOriginX - originX) * 0.05;
-        originY += (targetOriginY - originY) * 0.05;
+        originX += (targetOriginX - originX) * lerpFactor;
+        originY += (targetOriginY - originY) * lerpFactor;
         originX = originX >= 0 ? Math.ceil(originX) : Math.floor(originX);
         originY = originY >= 0 ? Math.ceil(originY) : Math.floor(originY);
     });
 
     function animate() {
-        currentX += (targetX - currentX) * 0.05;
-        currentY += (targetY - currentY) * 0.05;
-        const rotateY = currentX >= 0 ? Math.ceil(currentX / window.innerWidth * 90) : Math.floor(currentX / window.innerWidth * 60);
-        const rotateX = currentY >= 0 ? Math.ceil(-currentY / window.innerHeight * 40) : Math.floor(-currentY / window.innerHeight * 50);
+        currentX += (targetX - currentX) * lerpFactor;
+        currentY += (targetY - currentY) * lerpFactor;
+        const rotateY = currentX >= 0 ? Math.ceil(currentX / window.innerWidth * 90) : Math.floor(currentX / window.innerWidth * 90);
+        const rotateX = currentY >= 0 ? Math.ceil(-currentY / window.innerHeight * 40) : Math.floor(-currentY / window.innerHeight * 40);
         const translateZ = 0;
         const translateX = currentX >= 0 ? Math.ceil(currentX / window.innerWidth * 60) : Math.floor(currentX / window.innerWidth * 60);
         const translateY = currentY >= 0 ? Math.ceil(currentY / window.innerHeight * 60 + window.innerHeight * -0.1) : Math.floor(currentY / window.innerHeight * 60 + window.innerHeight * -0.1);

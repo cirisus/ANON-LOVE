@@ -1,4 +1,6 @@
 export function addMouseMoveListener(element) {
+    let centerX = 0;
+    let centerY = 0;
     let originX = 50;
     let originY = 50;
     let targetX = 0;
@@ -23,8 +25,8 @@ export function addMouseMoveListener(element) {
     function animate() {
         currentX += (targetX - currentX) * 0.05;
         currentY += (targetY - currentY) * 0.05;
-        const rotateY = currentX >= 0 ? Math.ceil(currentX / window.innerWidth * 90) : Math.floor(currentX / window.innerWidth * 60);
-        const rotateX = currentY >= 0 ? Math.ceil(-currentY / window.innerHeight * 40) : Math.floor(-currentY / window.innerHeight * 50);
+        const rotateY = currentX >= 0 ? Math.ceil(currentX / window.innerWidth * 90) : Math.floor(currentX / window.innerWidth * 90);
+        const rotateX = currentY >= 0 ? Math.ceil(-currentY / window.innerHeight * 40) : Math.floor(-currentY / window.innerHeight * 40);
         const translateZ = 0;
         const translateX = currentX >= 0 ? Math.ceil(currentX / window.innerWidth * 60) : Math.floor(currentX / window.innerWidth * 60);
         const translateY = currentY >= 0 ? Math.ceil(currentY / window.innerHeight * 60 + window.innerHeight * -0.1) : Math.floor(currentY / window.innerHeight * 60 + window.innerHeight * -0.1);
