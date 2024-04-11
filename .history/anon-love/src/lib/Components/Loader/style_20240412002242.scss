@@ -74,19 +74,11 @@
     display: flex;
     width: 100%;
     height: 100%;
+    transform: translateY(-10%);
     filter: drop-shadow(2px 4px 0 rgba(170, 0, 255, 0.6)) hue-rotate(45deg);
     justify-content: center;
     align-items: center;
     padding: 10%;
-
-    transform: translate3d(0px, -10%, 0px) rotateX(0deg) rotateY(0deg);
-    transition: transform 100ms ease;
-    transform-style: preserve-3d;
-    transform-origin: center center;
-    > svg {
-    min-width: 500px;
-    min-height: 400px;
-    }
 }
 .anon-sprite {
     position: absolute;
@@ -156,4 +148,12 @@
         transition: all 1s;
         z-index: 1;
     }
+}
+.anon-signature svg {
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);
+    transition: transform 300ms;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    min-width: 500px;
+    min-height: 400px;
 }

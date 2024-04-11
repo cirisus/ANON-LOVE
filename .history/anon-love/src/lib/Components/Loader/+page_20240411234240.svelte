@@ -2,18 +2,27 @@
     import { onMount } from 'svelte';
     import { destroyLoader ,updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
-    import { addMouseMoveListener } from './scripts/interact.js';
     let progress = 0;
-    let svgElement;
+    let rotateX = 0;
+    let rotateY = 0;
 
     onMount(async () => {
-        setTimeout(() => {
-            addMouseMoveListener(svgElement);
-        }, 0);
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
         destroyLoader();
+        container.addEventListener('mousemove', handleMouseMove);
     });
+
+    function handleMouseMove(e) {
+        const svgElement = e.currentTarget.querySelector('svg');
+        const width = svgElement.offsetWidth;
+        const height = svgElement.offsetHeight;
+        const x = e.pageX - svgElement.offsetLeft - width / 2;
+        const y = e.pageY - svgElement.offsetTop - height / 2;
+        rotateY = x / width * 30;
+        rotateX = -y / height * 30;
+        svgElement.style.transform = `translate3d(0px, 0px, 0px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    }
 </script>
 
 <div id="loader">
@@ -24,8 +33,8 @@
     </div>
     <div class="progress-text"><span class="progress-percentage">{progress}</span></div>
     <div id="open-effects">
-        <div class="anon-signature" bind:this={svgElement}></div>
-        <!--<div class="anon-sprite"></div>-->
+        <div class="anon-signature"></div>
+        <!--- <div class="anon-sprite"></div> --->
     </div>
     <div class="tip" data-info="tip"><div class="tip-alt">Love!~<span>あのちゃん</span></div><div class="sweep-line"></div><div class="tip-origin">TAP TO CONTINUE</div></div>
 </div>
