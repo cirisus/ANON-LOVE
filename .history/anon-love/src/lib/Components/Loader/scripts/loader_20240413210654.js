@@ -64,7 +64,9 @@ export function destroyLoader() {
         const descendants = loader.querySelectorAll('*');
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
         Promise.all(allAnimations.map(animation => animation.finished))
-        .catch(error => {})
+        .catch(error => {
+            console.error('Animation error: ', error);
+        })
         .then(() => {
             if (!document.querySelector('#loader')) {
                 return;
