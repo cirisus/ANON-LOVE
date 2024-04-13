@@ -63,9 +63,15 @@ export function destroyLoader() {
     if (loader) {
         const descendants = loader.querySelectorAll('*');
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
-        Promise.all(allAnimations.map(animation => animation.finished))
-        .catch(error => {})
-        .then(() => {
+        Promise.all(allAnimations.map(animation => {
+            try {
+                return animation.finished;
+            } catch (error) {
+                console.error('Animation error: ', error);
+                // 返回一个已经解决的 Promise，这样它不会影响 Promise.all
+                return Promise.resolve();
+            }
+        })).then(() => {
             if (!document.querySelector('#loader')) {
                 return;
             }
@@ -78,6 +84,18 @@ export function destroyLoader() {
                 easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
                 fill: 'forwards'
             });
+            const tipOrigin = document.querySelector('.tip-origin');
+            const tipAlt = document.querySelector('.tip-alt');
+            const sweepLine = document.querySelector('.sweep-line');
+            if (tipOrigin) {
+                tipOrigin.style.clipPath = `polygon(100% 0, 100% 0, 100% 70%, 100% 70%)`;
+            }
+            if (tipAlt) {
+                tipAlt.style.clipPath = `polygon(0 0, 100% 0,100% 70%, 0 70%)`;
+            }
+            if (sweepLine) {
+                sweepLine.style.left = '100%';
+            }
             fadeOutAnimation.finished.then(() => {
                 loader.remove();
             });

@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import { destroyLoader ,updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
-    import { addMouseMoveListener } from './scripts/mouseSensing.js';
+    //import { addMouseMoveListener } from './scripts/mouseSensing.js';
     let progress = 0;
     let svgElement;
 

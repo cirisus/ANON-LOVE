@@ -52,23 +52,17 @@ export function updateProgress(newProgress, callback) {
     }
 }
 let isDestroying = false;
-
 export function destroyLoader() {
     if (isDestroying) {
         return;
     }
-    isDestroying = true;
+    iaDestroying = true;
 
     const loader = document.querySelector('#loader');
     if (loader) {
         const descendants = loader.querySelectorAll('*');
         const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
-        Promise.all(allAnimations.map(animation => animation.finished))
-        .catch(error => {})
-        .then(() => {
-            if (!document.querySelector('#loader')) {
-                return;
-            }
+        Promise.all(allAnimations.map(animation => animation.finished)).then(() => {
             const fadeOutAnimation = loader.animate([
                 { opacity: 1, backdropFilter: 'blur(1rem) brightness(1.15) saturate(0.5)', filter: 'blur(0)', transform: 'scale(1)'},
                 { opacity: 0.85, backdropFilter: 'blur(0.5rem) brightness(1.05) saturate(0.8)', filter: 'blur(0)', transform: 'scale(1)' },
@@ -78,6 +72,18 @@ export function destroyLoader() {
                 easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
                 fill: 'forwards'
             });
+            const tipOrigin = document.querySelector('.tip-origin');
+            const tipAlt = document.querySelector('.tip-alt');
+            const sweepLine = document.querySelector('.sweep-line');
+            if (tipOrigin) {
+                tipOrigin.style.clipPath = `polygon(100% 0, 100% 0, 100% 70%, 100% 70%)`;
+            }
+            if (tipAlt) {
+                tipAlt.style.clipPath = `polygon(0 0, 100% 0,100% 70%, 0 70%)`;
+            }
+            if (sweepLine) {
+                sweepLine.style.left = '100%';
+            }
             fadeOutAnimation.finished.then(() => {
                 loader.remove();
             });
