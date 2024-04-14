@@ -49,10 +49,9 @@ html, body {
 	height: 100%;
 }
 body {
-	color: #333;
+	color: #2f2828;
 	background-color: var(--anon-faint);
 	margin: 0;
-	padding: 8px;
 	box-sizing: border-box;
 	font-family: "Overpass","Segoe UI","Noto Sans SC", BlinkMacSystemFont, Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
