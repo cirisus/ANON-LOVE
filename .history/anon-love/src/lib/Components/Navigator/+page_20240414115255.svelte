@@ -27,7 +27,7 @@
         position: fixed;
         right: 0;
         top: 0;
-        width: min(300px,40vw);
+        width: min(300px,30vw);
         height: 100%;
         background-color: #f5f5f5a0;
         /* Dynamic Calc */
@@ -69,23 +69,19 @@
                 justify-content: center;
                 align-items: center;
                 position: relative;
-                padding: 0 .5rem;
-                transition: padding .4s ease-in-out;
-                word-break: keep-all;
-                white-space: nowrap;
+                padding: 0 1rem;
+                transition: paddding .3s ease-in-out;
                 &:hover {
                     padding: 0rem;
-                    transition: padding .4s ease-out;
+                    transition: padding .3s ease-in-out;
                 }
                 &::after {
                     position: relative;
                     content: attr(data-hint);
                     font-size: .5em;
-                    word-break: keep-all;
-                    white-space: nowrap;
                     width: 0;
                     height: 100%;
-                    transition: width .3s cubic-bezier(0, 0, 0.5, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
+                    transition: width .2s .1s ease, color .2s, filter .2s;
                     color: transparent;
                     display: flex;
                     justify-content: center;
@@ -94,11 +90,11 @@
                 }
                 &:hover::after {
                     width: 100%;
-                    transition: width .3s ease-out, color .3s ease-out, filter .3s ease-out;//fade in
+                    transition: width .3s ease, color .2s, filter .2s;
                     color: #333;
                     filter: blur(0);
-                }
             }
+        }
         }
         > .navTitle {
             font-size: 2rem;

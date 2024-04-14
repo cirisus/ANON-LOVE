@@ -85,7 +85,7 @@
                     white-space: nowrap;
                     width: 0;
                     height: 100%;
-                    transition: width .3s cubic-bezier(0, 0, 0.5, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
+                    transition: width .3s cubic-bezier(0, 0, 0.4, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
                     color: transparent;
                     display: flex;
                     justify-content: center;

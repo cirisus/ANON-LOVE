@@ -27,7 +27,7 @@
         position: fixed;
         right: 0;
         top: 0;
-        width: min(300px,40vw);
+        width: min(300px,30vw);
         height: 100%;
         background-color: #f5f5f5a0;
         /* Dynamic Calc */
@@ -53,7 +53,6 @@
             border-radius: .5rem;
             margin: .15rem .75rem;
             transition: .3s background-color cubic-bezier(0, 0.6, 0.75, 1);
-            padding: 0 1rem;
             &:hover {
                 background-color: var(--anon-light);
             }
@@ -69,36 +68,21 @@
                 justify-content: center;
                 align-items: center;
                 position: relative;
-                padding: 0 .5rem;
-                transition: padding .4s ease-in-out;
-                word-break: keep-all;
-                white-space: nowrap;
-                &:hover {
-                    padding: 0rem;
-                    transition: padding .4s ease-out;
-                }
                 &::after {
-                    position: relative;
+                    position: absolute;
                     content: attr(data-hint);
                     font-size: .5em;
-                    word-break: keep-all;
-                    white-space: nowrap;
                     width: 0;
                     height: 100%;
-                    transition: width .3s cubic-bezier(0, 0, 0.5, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
+                    transition: width .1s, color .2s .1s;
                     color: transparent;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    filter:blur(1rem);
                 }
                 &:hover::after {
                     width: 100%;
-                    transition: width .3s ease-out, color .3s ease-out, filter .3s ease-out;//fade in
+                    transition: all .3s;
                     color: #333;
-                    filter: blur(0);
-                }
             }
+        }
         }
         > .navTitle {
             font-size: 2rem;
