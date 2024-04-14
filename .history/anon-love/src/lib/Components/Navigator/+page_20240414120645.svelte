@@ -27,7 +27,7 @@
         position: fixed;
         right: 0;
         top: 0;
-        width: min(300px,40vw);
+        width: min(300px,30vw);
         height: 100%;
         background-color: #f5f5f5a0;
         /* Dynamic Calc */
@@ -71,8 +71,6 @@
                 position: relative;
                 padding: 0 .5rem;
                 transition: padding .4s ease-in-out;
-                word-break: keep-all;
-                white-space: nowrap;
                 &:hover {
                     padding: 0rem;
                     transition: padding .4s ease-out;
@@ -85,7 +83,7 @@
                     white-space: nowrap;
                     width: 0;
                     height: 100%;
-                    transition: width .3s cubic-bezier(0, 0, 0.5, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
+                    transition: width .2s s ease-in-out, color .3s ease-in-out, filter .3s ease-in-out;//fade out
                     color: transparent;
                     display: flex;
                     justify-content: center;

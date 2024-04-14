@@ -8,22 +8,22 @@
 		{
 			navTitle: 'Internal',
 			links: [
-				{ href: '#/home', text: 'Home', altTxt: 'Welcome!'},
-				{ href: '#/about', text: 'About', altTxt: 'More if you want.'},
-				{ href: '#/projects', text: 'Projects', altTxt: 'My works.'},
-				{ href: '#/contact', text: 'Contact', altTxt: 'Reach me out.'}
+				{ href: '#/home', text: 'Home' },
+				{ href: '#/about', text: 'About' },
+				{ href: '#/projects', text: 'Projects' },
+				{ href: '#/contact', text: 'Contact' }
 			]
 		},
 		{
 			navTitle: 'External',
 			links: [
-				{ href: 'https://bang-dream.bushimo.jp/mygo/', text: `𝗠𝘆𝗚𝗢!!!!! Official`, external: true, altTxt:'Official page.'}
+				{ href: 'https://bang-dream.bushimo.jp/mygo/', text: `𝗠𝘆𝗚𝗢!!!!! Official`, external: true }
 			]
 		},
 		{
 			navTitle: 'Sponsor',
 			links: [
-				{ href: 'https://cirisus.com', text: `Cirisus' blog`, external: true, altTxt:'Another me.'},
+				{ href: 'https://cirisus.com', text: `Cirisus' blog`, external: true }
 			]
 		}
 	];

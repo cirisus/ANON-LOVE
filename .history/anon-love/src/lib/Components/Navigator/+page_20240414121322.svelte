@@ -71,8 +71,7 @@
                 position: relative;
                 padding: 0 .5rem;
                 transition: padding .4s ease-in-out;
-                word-break: keep-all;
-                white-space: nowrap;
+                background-color: var(--anon-light);
                 &:hover {
                     padding: 0rem;
                     transition: padding .4s ease-out;
@@ -85,12 +84,13 @@
                     white-space: nowrap;
                     width: 0;
                     height: 100%;
-                    transition: width .3s cubic-bezier(0, 0, 0.5, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
+                    transition: width .3s cubic-bezier(0, 0, 0.4, 1), color .2s ease-in-out, filter .2s ease-in-out;//fade out
                     color: transparent;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     filter:blur(1rem);
+                    background-color: var(--anon-light);
                 }
                 &:hover::after {
                     width: 100%;
