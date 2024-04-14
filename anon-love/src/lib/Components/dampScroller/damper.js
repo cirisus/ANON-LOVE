@@ -1,6 +1,7 @@
 export default function handleScroll(scroller, scrollBoxes) {
     let currentIndex = 0;
     let unitHeight = scrollBoxes[0].offsetHeight;
+    let totalHeight = unitHeight * scrollBoxes.length;
     let minScrollDistance = 10;
     let lastScrollTime = 0;
     const debounceInterval = 750;
@@ -25,10 +26,15 @@ export default function handleScroll(scroller, scrollBoxes) {
             currentIndex = Math.max(currentIndex - 1, 0);
         }
 
+        let targetScrollPosition = -unitHeight * currentIndex;
+        if (targetScrollPosition < -totalHeight) {
+            targetScrollPosition = -totalHeight;
+        }
+
         scrollBoxes.forEach((box, index) => {
             box.dataset.toggle = index === currentIndex ? 'show' : 'hide';
         });
 
-        scroller.style.transform = `translateY(${-unitHeight * currentIndex}px)`;
+        scroller.style.transform = `translateY(${targetScrollPosition}px)`;
     }, { passive: false });
 }

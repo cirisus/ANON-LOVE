@@ -4,7 +4,9 @@
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 	import Scroller from '../Components/dampScroller/+page.svelte';
-    //Navigaition links
+    //Scrollbox slots
+	const slotNum = 5;
+	//Navigaition links
 	let sideNavigator = [
 		{
 			navTitle: 'Internal',
@@ -39,18 +41,24 @@
 </script>
 
 <body>
-	<Scroller slots=3>
+	<Loader />
+	<Scroller slots=5>
 		<div slot="scrollbox-1">
 			<p>1</p>
 		</div>
-		<div slot="scrollbox-2" style="background-color: #000">
+		<div slot="scrollbox-2">
 			<p>2</p>
 		</div>
-		<div slot="scrollbox-3" style="background-color: #fff">
+		<div slot="scrollbox-3">
 			<p>3</p>
 		</div>
+		<div slot="scrollbox-4">
+			<p>4</p>
+		</div>
+		<div slot="scrollbox-5">
+			<p>5</p>
+		</div>
 	</Scroller>
-	<!--<Loader />-->
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
 			<div id="avatar">
@@ -66,59 +74,4 @@
 
 <style lang="scss">
 	@import './style.scss';
-	#carousel {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: transparent;
-		pointer-events: none;
-		background-image: url(/anon-love/public/asset/anon-1.png);
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-clip: border-box;
-	}
-	div[slot="extra-bottom"] {
-		min-height: 5rem;
-		max-height: 7rem;
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-		font-size: .75rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		> span {
-			white-space: nowrap;
-			> a {
-				color: var(--anon-base);
-				text-decoration: none;
-				position: relative;
-				font-weight: 600;
-				transition: all .3s;
-				&:hover {
-					color: #333;
-					font-weight: 300;
-				}
-				&::before {
-					position: absolute;
-					content:"";
-					width: 0;
-					height: 90%;
-					z-index: -1;
-					background-color: var(--anon-light);
-					box-shadow: 0 0 0 0 transparent;
-					transition: all .3s;
-				}
-				&:hover::before {
-					width: 103%;
-					box-shadow: 0 0 1px 1px var(--anon-light);
-					transition: all .3s;
-				}
-		}
-	}
-}
 </style>
