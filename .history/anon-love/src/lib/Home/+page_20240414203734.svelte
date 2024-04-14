@@ -4,6 +4,8 @@
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 	import Scroller from '../Components/dampScroller/+page.svelte';
+	//Scroller length
+	let slots = 3;
     //Navigaition links
 	let sideNavigator = [
 		{
@@ -39,18 +41,18 @@
 </script>
 
 <body>
-	<Scroller slots=3>
-		<div slot="scrollbox-1">
+	<Scroller slots={$slots}>
+		<div id="scrollbox-1">
 			<p>1</p>
 		</div>
-		<div slot="scrollbox-2" style="background-color: #000">
+		<div id="scrollbox-2">
 			<p>2</p>
 		</div>
-		<div slot="scrollbox-3" style="background-color: #fff">
+		<div id="scrollbox-3">
 			<p>3</p>
 		</div>
 	</Scroller>
-	<!--<Loader />-->
+	<Loader />
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
 			<div id="avatar">
