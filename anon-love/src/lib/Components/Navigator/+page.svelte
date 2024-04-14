@@ -80,7 +80,7 @@
                 &::after {
                     position: relative;
                     content: attr(data-hint);
-                    font-size: .5em;
+                    font-size: .75em;
                     word-break: keep-all;
                     white-space: nowrap;
                     width: 0;
@@ -95,7 +95,7 @@
                 &:hover::after {
                     width: 100%;
                     transition: width .3s ease-out, color .3s ease-out, filter .3s ease-out;//fade in
-                    color: #333;
+                    color: #583c3c;
                     filter: blur(0);
                 }
             }

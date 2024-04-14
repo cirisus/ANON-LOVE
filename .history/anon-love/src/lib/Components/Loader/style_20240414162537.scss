@@ -1,0 +1,159 @@
+@keyframes cutProgressBar {to {width: 0;}}
+@keyframes leftInText {from {transform: translate(-50%, -35%);} to {transform: translate(-150%, -35%);}}
+@keyframes leftInSprite {from {transform: translate(100%, 10%);} to {transform: translate(25%, 10%);}}
+@keyframes fade {from {opacity: 1;} to {opacity: 0;}}
+@keyframes blurBold {from {filter: blur(0);} to {filter: blur(1rem);}}
+@keyframes blurThin {from {filter: blur(0);} to {filter: blur(6px);}}
+#loader, #open-effects {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(1rem) brightness(1.15) saturate(0.5);
+    z-index: 9999;
+}
+#open-effects {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+.progress-bar-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 15px;
+    background-image: url(/anon-love/public/asset/progress_bg.png);
+    background-size: contain;
+    display: flex;
+    justify-content: space-between;
+    animation: cutProgressBar .5s cubic-bezier(.4,0,.2,1) 2.25s 1 forwards, blurThin .5s cubic-bezier(1,0,1,1) 2.25s 1 forwards;
+    mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3CforeignObject width='100%25' height='100%25'%3E%3Cbody class='wrap' xmlns='http://www.w3.org/1999/xhtml'%3E%3Cstyle%3E.wrap{box-sizing:border-box;margin:0;height:100%25;padding:4px}.shadow{height:100%25;background:%23000;border-radius:10px;box-shadow:0 0 1px %23000,0 0 3px %23000,0 0 3px %23000e,0 0 4px %23000d,0 0 5px %23000d,0 0 6px %23000d}%3C/style%3E%3Cdiv class='shadow'/%3E%3C/body%3E%3C/foreignObject%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-position: center;
+    > .progress-bar {
+        height: 100%;
+        position: relative;
+        background-color: transparent;
+        width: 0;
+        z-index: 0;
+        transition-property: width;
+        transition-duration: 0.5s;
+        box-shadow: 0 0 4px var(--anon-faint),1px 0 4px 1px var(--anon-base),inset 0 0 15px var(--anon-light);
+        filter: blur(2px);
+        &[data-pos="mid"] {
+            width: 100%;
+            box-shadow: none;
+            background-color: rgb(from var(--anon-faint) r g b / 100%);
+        }
+        &[data-pos="right"] {
+            box-shadow: 0 0 4px var(--anon-faint),1px 0 4px 1px var(--anon-base),inset 0 0 15px var(--anon-light);
+        }
+    }
+}
+.progress-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Meglona_italic', serif;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    font-size: 4rem;
+    color: var(--anon-base);
+    text-shadow: 0 0 7px var(--anon-light);
+    animation: leftInText .25s ease 2.5s 1 forwards, fade .25s ease 2.5s 1 forwards, blurBold .25s ease 2.35s 1 forwards;
+}
+.anon-signature {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(2px 4px 0 rgba(170, 0, 255, 0.6)) hue-rotate(45deg);
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+
+    transform: translate3d(0px, -10%, 0px) rotateX(0deg) rotateY(0deg);
+    transition: transform 100ms ease;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    > svg {
+    min-width: 500px;
+    min-height: 400px;
+    }
+}
+.anon-sprite {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    height: 100%;
+    min-width: 300px;
+    max-width: 450px;
+    opacity: 0;
+    background-image: url(/anon-love/public/asset/chara_anon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left bottom;
+    animation: leftInSprite .5s cubic-bezier(.4,0,.6,1) 2s 1 forwards, fade .4s cubic-bezier(.4,0,.6,1) 2.25s 1 reverse forwards, blurThin .4s cubic-bezier(.4,0,.6,1) 2.25s 1 reverse forwards;
+}
+.tip[data-info] {
+    display: flex;
+    width: 29rem;
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Meglona_italic', serif;
+    font-size: clamp(1rem, 5vw, 3rem);
+    opacity: 0;
+    color: var(--anon-vivid);
+    text-shadow: 0 0 7px var(--anon-light);
+    animation: fade .45s ease 3s 1 reverse forwards, blurBold .55s ease 3s 1 reverse forwards;
+    clip-path:  polygon(0 0, 100% 0, 100% 75%, 0 75%);
+    > :is(.tip-alt,.tip-origin){
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-transform: uppercase;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        word-break: keep-all;
+        white-space: nowrap;
+        transition: all 1s;
+        font-style: italic;
+    }
+    > .tip-alt {
+        clip-path: polygon(0 0, 0 0, 0 70%, 0 70%);
+        font-family: 'Meglona_italic', 'Nagomi_Extralight', serif;
+        > span {
+            font-size: 1.5em;
+            -webkit-text-stroke: 1px;
+        }
+    }
+    > .tip-origin {
+        clip-path: polygon(0 0,100% 0, 100% 70%, 0 70%);
+    }
+    >.sweep-line {
+        position: absolute;
+        left: -1%;
+        width: 0;
+        height: 125%;
+        border: 2px solid #333;
+        animation: var(--clip-line);
+        transition: all 1s;
+        z-index: 1;
+    }
+}

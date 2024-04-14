@@ -44,7 +44,7 @@
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
 			<div id="avatar">
-				<img src="/anon-love/public/asset/avatar.jpg" alt="avatar" />
+				<img src="/anon-love/public/asset/avatar.png" alt="avatar" />
 			</div>
 		</div>
 

@@ -115,7 +115,7 @@
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Meglona_italic', serif;
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
     opacity: 0;
     color: var(--anon-vivid);
     text-shadow: 0 0 7px var(--anon-light);

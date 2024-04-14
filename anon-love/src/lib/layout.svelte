@@ -1,5 +1,6 @@
 <script>
 	import Modal from './Components/Popup/+page.svelte';
+	import { ripple } from './universal';
 	import markdown from '../../../docs/RESOURCES.md';
 
 	let title = ' CONTENT USAGE SPECIFICATIONS';
@@ -18,7 +19,7 @@
 	</nav>
 </header>
 
-<main>
+<main use:ripple>
 	<slot></slot>
 </main>
 <footer>
@@ -27,6 +28,8 @@
 </footer>
 
 <style lang="scss">
+@keyframes ripple {
+to {transform: scale(4);opacity: 0;}}
 footer > span {
 	white-space: nowrap;
 	> a {
@@ -57,5 +60,12 @@ footer > span {
 			transition: all .3s;
 		}
 	}
+}
+.ripple {
+	position: absolute;
+	border-radius: 50%;
+	transform: scale(0);
+	animation: ripple 1s linear;
+	backdrop-filter: saturate(1.6);
 }
 </style>
