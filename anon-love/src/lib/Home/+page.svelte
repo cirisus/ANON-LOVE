@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
+	import Scroller from '../Components/dampScroller/+page.svelte';
     //Navigaition links
 	let sideNavigator = [
 		{
@@ -38,13 +39,22 @@
 </script>
 
 <body>
-	<div id="carousel">
-	</div>
-	<Loader />
+	<Scroller slots=3>
+		<div slot="scrollbox-1">
+			<p>1</p>
+		</div>
+		<div slot="scrollbox-2" style="background-color: #000">
+			<p>2</p>
+		</div>
+		<div slot="scrollbox-3" style="background-color: #fff">
+			<p>3</p>
+		</div>
+	</Scroller>
+	<!--<Loader />-->
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
 			<div id="avatar">
-				<img src="/anon-love/public/asset/avatar.jpg" alt="avatar" />
+				<img src="/anon-love/public/asset/avatar.png" alt="avatar" />
 			</div>
 		</div>
 
