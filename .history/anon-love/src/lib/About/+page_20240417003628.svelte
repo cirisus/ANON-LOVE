@@ -46,6 +46,3 @@
 		</div>
 	</Navigator>
 </main>
-<style lang="scss">
-	@import '../Home/style.scss';
-</style>

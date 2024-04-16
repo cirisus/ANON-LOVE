@@ -24,6 +24,7 @@
 			]
 		}
 	];
+	onMount(blurSiblingsOfLoader);
 	function handleClick(event) {
         const link = sideNavigator.find(item => item.text === event.detail.text);
         if (link && link.external) {
@@ -46,6 +47,3 @@
 		</div>
 	</Navigator>
 </main>
-<style lang="scss">
-	@import '../Home/style.scss';
-</style>

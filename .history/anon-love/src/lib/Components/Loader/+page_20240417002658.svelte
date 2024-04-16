@@ -6,33 +6,32 @@
     let progress = 0;
     let svgElement;
 
-    const loadPage = async () => {
-        setTimeout(() => {
-            addMouseMoveListener(svgElement);
-        }, 0);
-        const container = document.querySelector('.anon-signature');
-        try {
-            await loadAnimation(container);
-            updateProgress(progress); // Update the progress bar
-        } catch (error) {
-            if (error.name === 'AbortError') {
-                console.log('Animation loading was aborted');
-            } else {
-                throw error;
+    onMount(async () => {
+        const handleHashChange = async () => {
+            setTimeout(() => {
+                addMouseMoveListener(svgElement);
+            }, 0);
+            const container = document.querySelector('.anon-signature');
+            try {
+                await loadAnimation(container);
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    console.log('Animation loading was aborted');
+                } else {
+                    throw error;
+                }
             }
-        }
-        destroyLoader();
-    };
+            destroyLoader();
+        };
 
-    onMount(loadPage);
-
-    const handleHashChange = loadPage;
+        window.addEventListener('hashchange', handleHashChange);
+        // Run once on mount in case the page is loaded with a hash already present
+        handleHashChange();
+    });
 
     onDestroy(() => {
         window.removeEventListener('hashchange', handleHashChange);
     });
-
-    window.addEventListener('hashchange', handleHashChange);
 </script>
 
 <div id="loader">
