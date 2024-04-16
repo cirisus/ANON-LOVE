@@ -1,12 +1,5 @@
-<script lang="js">
-	import { blurSiblingsOfLoader } from "./scripts/common.js";
-	import { onMount } from 'svelte';
+<script>
 	import Navigator from '../Components/Navigator/+page.svelte';
-	import Loader from '../Components/Loader/+page.svelte';
-	import Scroller from '../Components/dampScroller/+page.svelte';
-    //Scrollbox slots
-	const slotNum = 5;
-	//Navigaition links
 	let sideNavigator = [
 		{
 			navTitle: 'Internal',
@@ -39,21 +32,8 @@
         }
     }
 </script>
-
-<body>
-	<Loader />
-	<Scroller slots=5>
-		<div slot="scrollbox-1">
-		</div>
-		<div slot="scrollbox-2">
-		</div>
-		<div slot="scrollbox-3">
-		</div>
-		<div slot="scrollbox-4">
-		</div>
-		<div slot="scrollbox-5">
-		</div>
-	</Scroller>
+<main>
+	<h1>About Page.</h1>
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
 			<div id="avatar">
@@ -65,8 +45,4 @@
 			<span class="contactInfo">Contact me|<a href="mailto:cirisus@outlook.com">Cirisus@outlook.com</a></span>
 		</div>
 	</Navigator>
-</body>
-
-<style lang="scss">
-	@import './style.scss';
-</style>
+</main>
