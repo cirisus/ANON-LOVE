@@ -49,7 +49,7 @@ export default function handleScroll(scroller, scrollBoxes) {
             currentIndex = Math.max(0, Math.min(currentIndex, scrollBoxes.length - 1));
             scroller.style.transform = `translateY(${-unitHeight * currentIndex}px)`;
         }
-    }
+}
 
     window.addEventListener('wheel', event => {
         scroll(event, event.deltaY);

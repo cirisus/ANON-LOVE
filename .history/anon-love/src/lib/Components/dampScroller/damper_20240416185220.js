@@ -21,7 +21,7 @@ export default function handleScroll(scroller, scrollBoxes) {
         }
         lastScrollTime = currentTime;
 
-        if (deltaY > 0) {``
+        if (deltaY > 0) {
             currentIndex = Math.min(currentIndex + 1, scrollBoxes.length - 1);
         } else {
             currentIndex = Math.max(currentIndex - 1, 0);
@@ -45,8 +45,7 @@ export default function handleScroll(scroller, scrollBoxes) {
 
         let currentScrollPosition = Math.abs(parseInt(scroller.style.transform.split('(')[1]));
         if (currentScrollPosition / unitHeight !== currentIndex) {
-            currentIndex = Math.ceil(currentScrollPosition / unitHeight);
-            currentIndex = Math.max(0, Math.min(currentIndex, scrollBoxes.length - 1));
+            currentIndex = Math.floor(currentScrollPosition / unitHeight);
             scroller.style.transform = `translateY(${-unitHeight * currentIndex}px)`;
         }
     }

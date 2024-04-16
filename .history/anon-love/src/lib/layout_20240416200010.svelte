@@ -32,7 +32,8 @@
 to {transform: scale(4);opacity: 0;}}
 footer > span {
 	white-space: nowrap;
-		> button {
+	box-shadow: 0px -3px 4px #e8e8e8, -4px 0px 4px #e8e8e8, 4px 0px 4px #e8e8e8, 0px -6px 8px #f0f0f0, -6px 0 8px #f0f0f0, 6px 0 8px #f0f0f0;
+	> button {
 		font-family: inherit;
 		font-size: inherit;
 		-webkit-padding: revert;

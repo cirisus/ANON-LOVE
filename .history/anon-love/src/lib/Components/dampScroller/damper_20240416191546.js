@@ -46,7 +46,6 @@ export default function handleScroll(scroller, scrollBoxes) {
         let currentScrollPosition = Math.abs(parseInt(scroller.style.transform.split('(')[1]));
         if (currentScrollPosition / unitHeight !== currentIndex) {
             currentIndex = Math.ceil(currentScrollPosition / unitHeight);
-            currentIndex = Math.max(0, Math.min(currentIndex, scrollBoxes.length - 1));
             scroller.style.transform = `translateY(${-unitHeight * currentIndex}px)`;
         }
     }

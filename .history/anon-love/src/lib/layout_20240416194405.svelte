@@ -23,7 +23,7 @@
 	<slot></slot>
 </main>
 <footer>
-	<span class="footer">©2024 ANON-LOVE|<button on:click|preventDefault={handleToggleModal} aria-label="open">CONTENT USAGE SPECIFICATION</button></span>
+	<span class="footer">©2024 ANON-LOVE|<button role="button" on:click|preventDefault={handleToggleModal} aria-label="open">CONTENT USAGE SPECIFICATION</button></span>
     <Modal {title} {buttonText} {showModal} {content} on:toggleModal={handleToggleModal} />
 </footer>
 
@@ -32,16 +32,14 @@
 to {transform: scale(4);opacity: 0;}}
 footer > span {
 	white-space: nowrap;
-		> button {
+	> button {
 		font-family: inherit;
 		font-size: inherit;
 		-webkit-padding: revert;
-		padding: 0;
+		padding: revert;
 		margin: revert;
 		box-sizing: border-box;
 		border: none;
-		border-radius: 0;
-		background-color: transparent !important;
 
 		color: var(--anon-vivid);
 		text-decoration: none;
@@ -65,10 +63,17 @@ footer > span {
 			transition: all .3s;
 		}
 		&:hover::before {
-			width: 100%;
+			width: 103%;
 			box-shadow: 0 0 1px 1px var(--anon-light);
 			transition: all .3s;
 		}
 	}
+}
+.ripple {
+	position: absolute;
+	border-radius: 50%;
+	transform: scale(0);
+	animation: ripple 1s linear;
+	backdrop-filter: saturate(1.6);
 }
 </style>
