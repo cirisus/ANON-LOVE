@@ -12,7 +12,7 @@
         }, 0);
         const container = document.querySelector('.anon-signature');
         if (container === null) {
-            console.error('Could not find element');
+            console.error('Could not find .anon-signature element');
             return;
         }
         try {
