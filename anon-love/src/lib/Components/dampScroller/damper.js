@@ -32,9 +32,28 @@ export default function handleScroll(scroller, scrollBoxes) {
             targetScrollPosition = -totalHeight;
         }
 
-        scrollBoxes.forEach((box, index) => {
-            box.dataset.toggle = index === currentIndex ? 'show' : 'hide';
+    function handleDivChildren(divChildren, toggle) {
+        divChildren.forEach(divChild => {
+            if (toggle === 'show') {
+                divChild.classList.add('fade-in');
+            } else {
+                divChild.classList.remove('fade-in');
+            }
         });
+    }
+
+    function handleChild(child, index) {
+        let toggle = index === currentIndex ? 'show' : 'hide';
+        child.dataset.toggle = toggle;
+
+        let divChildren = child.querySelectorAll('div');
+        handleDivChildren(divChildren, toggle);
+    }
+
+    scrollBoxes.forEach((box, index) => {
+        let children = box.querySelectorAll('[slot^="scrollbox"]');
+        children.forEach(child => handleChild(child, index));
+    });
 
         scroller.style.transform = `translateY(${targetScrollPosition}px)`;
     }
@@ -49,7 +68,7 @@ export default function handleScroll(scroller, scrollBoxes) {
             currentIndex = Math.max(0, Math.min(currentIndex, scrollBoxes.length - 1));
             scroller.style.transform = `translateY(${-unitHeight * currentIndex}px)`;
         }
-    }
+}
 
     window.addEventListener('wheel', event => {
         scroll(event, event.deltaY);

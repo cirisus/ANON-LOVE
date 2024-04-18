@@ -4,6 +4,56 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+/*
+div[data-toggle="show"] {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		justify-items: center;
+		> div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			justify-items: center;
+			width: 300px;
+			height: 300px;
+			backdrop-filter: blur(1rem);
+			background-color: #fff5;
+			box-shadow: 0 0 3px 3px #fff9;
+			margin: auto;
+			padding: 0;
+
+            transform: translateY(0);
+			opacity: 1;
+			filter: blur(0);
+		}
+	}
+div[data-toggle="hide"] {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		justify-items: center;
+		> div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			justify-items: center;
+			width: 300px;
+			height: 300px;
+			backdrop-filter: blur(1rem);
+			background-color: #fff5;
+			box-shadow: 0 0 3px 3px #fff9;
+			margin: auto;
+			padding: 0;
+
+			will-change: transform, opacity, filter;
+			transition: transform 0.3s, opacity 0.3s, filter 0.3s;
+			transform: translateY(-10%);
+			opacity: 0;
+			filter: blur(1rem);
+		}
+	}
+*/
 @for $i from 1 through 5 {
     div[slot$="#{$i}"] {
         position: relative;

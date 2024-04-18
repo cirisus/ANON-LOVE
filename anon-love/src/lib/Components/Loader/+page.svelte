@@ -1,19 +1,18 @@
 <script>
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount } from 'svelte';
     import { destroyLoader ,updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
     import { addMouseMoveListener } from './scripts/mouseSensing.js';
     let progress = 0;
     let svgElement;
 
-    const loadPage = async () => {
+    onMount(async () => {
         setTimeout(() => {
             addMouseMoveListener(svgElement);
         }, 0);
         const container = document.querySelector('.anon-signature');
         try {
             await loadAnimation(container);
-            updateProgress(progress); // Update the progress bar
         } catch (error) {
             if (error.name === 'AbortError') {
                 console.log('Animation loading was aborted');
@@ -22,17 +21,7 @@
             }
         }
         destroyLoader();
-    };
-
-    onMount(loadPage);
-
-    const handleHashChange = loadPage;
-
-    onDestroy(() => {
-        window.removeEventListener('hashchange', handleHashChange);
     });
-
-    window.addEventListener('hashchange', handleHashChange);
 </script>
 
 <div id="loader">

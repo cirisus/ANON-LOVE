@@ -20,7 +20,7 @@
             <slot name="scrollbox-2"></slot>
         </div>
         <div class="scrollbox">
-            <slot name="scrollbox-3"></slot>
+            <slot name="scrollbox-3" ></slot>
         </div>
         <div class="scrollbox">
             <slot name="scrollbox-4"></slot>
