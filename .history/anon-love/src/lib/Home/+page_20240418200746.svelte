@@ -53,12 +53,33 @@
 					Hello! I'm Cirisus, a web developer and a fan of Bang Dream! I'm currently working on this website to showcase my works and to share my love for Bang Dream! I hope you enjoy your stay here!
 				</p>
 			</Emerger>
+			<Emerger className="info">
+				<h1>INFO</h1>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>Cirisus</td>
+					</tr>
+					<tr>
+						<td>Age</td>
+						<td>18</td>
+					</tr>
+					<tr>
+						<td>Locale</td>
+						<td>Singapore</td>
+					</tr>
+					<tr>
+						<td>Occupation</td>
+						<td>Student</td>
+					</tr>
+				</table>
+			</Emerger>
 			<Emerger className="techs">
 				<h1>TECH STACK</h1>
 				This page is built with Svelte and SvelteKit. The source code is available on my GitHub. Below are the technologies used in this project:
 				<ul>
-					<li><b>Damp Scroller:</b> I used a fixed layer as the overall container and thus banned the usage of defaualt scrolling. I process the scroll by <span style="font-family: monospace">damper.js</span>, which process the scroll event and thus simulate scrolling to achieve damping effect and smooth page transition.</li>
-					<li><b>Loading Animation:</b> I used <span style="font-family: monospace">lottie.js</span> to demostrate a signature animation and onMount hook to destroy the loader, which prevents memory leaks while enhancing the scalability of animations.</li>
+					<li><b>Damp Scroller</b> I used a fixed layer as the overall container and thus banned the usage of defaualt scrolling. I process the scroll by <pre>damper.js</pre>, which process the scroll event and thus simulate scrolling to achieve damping effect and smooth page transition.</li>
+					<li><b>Loading Animation:</b> I used lottie.js to demostrate a signature animation and onMount hook to destroy the loader, which prevents memory leaks while enhancing the scalability of animations.</li>
 					<li><b>Mouse Sensing:</b> It's used quite lot at this blog - I created a hover-sensing sidebar on the right end of the page, which saves page layout space while enhancing the experience.</li>
 					<li><b>Embedded Markdown components:</b> Popup components can directly parse external markdown files and use them in the content usage regulations of individual pages, with a high degree of freedom and easy content management.</li>
 				</ul>
@@ -67,12 +88,13 @@
 		<div slot="scrollbox-2" data-toggle="hide">
 			<Emerger className="about">
 				<h1>Favorite</h1>
-				<ul>
-					<li>Bang Dream!</li>
-					<li>Web Development</li>
-					<li>Music</li>
-					<li>Games</li>
-				</ul>
+				<p>
+					- Bang Dream! <br>
+					- Web Development <br>
+					- Anime <br>
+					- Music <br>
+					- Games <br>
+				</p>
 			</Emerger>
 		</div>
 		<div slot="scrollbox-3" data-toggle="hide">
@@ -113,7 +135,6 @@
 	}
 	tr, td {
 		border: 1px solid #583636;
-		padding: 3px 6px;
 	}
 	.about {
     width: 50%;

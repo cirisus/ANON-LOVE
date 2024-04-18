@@ -12,9 +12,7 @@ div {
         color: #403333;
         border: 2px solid #583636;
         border-radius: 1rem;
-        backdrop-filter: blur(1rem) brightness(1.2);
-        transition: transform 0.3s 0.3s, opacity 0.3s 0.3s, filter 0.3s 0.3s;
-        will-change: transform, opacity, filter;
+        backdrop-filter: blur(1rem);
 }
 div.fade-in {
     opacity: 1;
