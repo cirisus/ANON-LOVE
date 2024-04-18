@@ -1,9 +1,12 @@
 <script lang="js">
 	import { blurSiblingsOfLoader } from "./scripts/common.js";
 	import { onMount } from 'svelte';
+	import { Router } from "svelte-spa-router";
+
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 	import Scroller from '../Components/dampScroller/+page.svelte';
+	import Emerger from '../Components/Emerger/+page.svelte';
     //Scrollbox slots
 	const slotNum = 5;
 	//Navigaition links
@@ -43,15 +46,31 @@
 <body>
 	<Loader />
 	<Scroller slots=5>
-		<div slot="scrollbox-1">
+		<div slot="scrollbox-1" data-toggle="show">
+			<Emerger className="about">
+				<h1>Who Am I</h1>
+				<p>
+					Hello! I'm Cirisus, a web developer and a fan of Bang Dream! I'm currently working on this website to showcase my works and to share my love for Bang Dream! I hope you enjoy your stay here!
+				</p>
+			</Emerger>
 		</div>
-		<div slot="scrollbox-2">
+		<div slot="scrollbox-2" data-toggle="hide">
+			<Emerger className="about">
+				<h1>Favorite</h1>
+				<p>
+					- Bang Dream! <br>
+					- Web Development <br>
+					- Anime <br>
+					- Music <br>
+					- Games <br>
+				</p>
+			</Emerger>
 		</div>
-		<div slot="scrollbox-3">
+		<div slot="scrollbox-3" data-toggle="hide">
 		</div>
-		<div slot="scrollbox-4">
+		<div slot="scrollbox-4" data-toggle="hide">
 		</div>
-		<div slot="scrollbox-5">
+		<div slot="scrollbox-5" data-toggle="hide">
 		</div>
 	</Scroller>
 	<Navigator {sideNavigator}>
@@ -69,4 +88,7 @@
 
 <style lang="scss">
 	@import './style.scss';
+	h1{
+		text-transform: uppercase;
+	}
 </style>

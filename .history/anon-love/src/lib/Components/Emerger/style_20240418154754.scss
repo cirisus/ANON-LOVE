@@ -1,0 +1,12 @@
+div {
+    opacity: 0;
+    transform: translateY(-10%);
+    filter: blur(1rem);
+    transition: transform 0.3s, opacity 0.3s, filter 0.3s;
+    will-change: transform, opacity, filter;
+}
+div.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
