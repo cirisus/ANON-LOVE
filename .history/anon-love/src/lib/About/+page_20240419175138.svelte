@@ -34,7 +34,6 @@
     }
 </script>
 <body>
-	<Loader />
 	<h1>About Page.</h1>
 	<Navigator {sideNavigator}>
 		<div slot="extra-top">
