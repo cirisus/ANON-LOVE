@@ -15,7 +15,6 @@
         "typescript": "^5.4.3"
     },
     "dependencies": {
-        "@sveltejs/adapter-static": "^3.0.1",
         "lottie-web": "^5.12.2",
         "marked": "^12.0.1",
         "page": "^1.11.6",
