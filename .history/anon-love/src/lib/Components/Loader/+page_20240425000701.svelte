@@ -8,17 +8,17 @@
     let progress = 0;
     let svgElement;
 
-    onMount(async () => {
+    async function loadAndDestroy() {
         addMouseMoveListener(svgElement);
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
         destroyLoader();
-    });
-
-    afterUpdate(() => {
         updateProgress(30);
-        setTimeout(() => updateProgress(100), 2000);
-    });
+        setTimeout(() => updateProgress(100), 2000); // 模拟加载过程
+    }
+
+    onMount(loadAndDestroy);
+    afterUpdate(loadAndDestroy);
 </script>
 
 <div id="loader">

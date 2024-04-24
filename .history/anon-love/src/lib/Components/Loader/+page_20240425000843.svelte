@@ -18,6 +18,7 @@
     afterUpdate(() => {
         updateProgress(30);
         setTimeout(() => updateProgress(100), 2000);
+        destroyLoader();
     });
 </script>
 

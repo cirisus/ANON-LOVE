@@ -1,23 +1,15 @@
 <script>
-    import { onMount, afterUpdate } from 'svelte';
+    import { onMount } from 'svelte';
     import { destroyLoader ,updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
     import { addMouseMoveListener } from './scripts/mouseSensing.js';
-
-    export let currentRoute;
     let progress = 0;
     let svgElement;
 
     onMount(async () => {
-        addMouseMoveListener(svgElement);
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
         destroyLoader();
-    });
-
-    afterUpdate(() => {
-        updateProgress(30);
-        setTimeout(() => updateProgress(100), 2000);
     });
 </script>
 

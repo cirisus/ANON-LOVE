@@ -51,7 +51,7 @@
 </script>
 
 <body>
-	<Loader {currentRoute} />
+	<Loader />
 	<Scroller slots=5>
 		<div slot="scrollbox-1" data-toggle="show">
 			<Emerger className="about">

@@ -1,19 +1,12 @@
 <script lang="js">
 	import { blurSiblingsOfLoader } from "./scripts/common.js";
-	import { setContext, onMount } from 'svelte';
-	import { location, Router } from "svelte-spa-router";
+	import { onMount } from 'svelte';
+	import { Router } from "svelte-spa-router";
 
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 	import Scroller from '../Components/dampScroller/+page.svelte';
 	import Emerger from '../Components/Emerger/+page.svelte';
-	//Router listener
-    let currentRoute = $location;
-	setContext('route', currentRoute);
-
-	$: {
-		currentRoute = $location;
-	}
     //Scrollbox slots
 	const slotNum = 5;
 	//Navigaition links
@@ -51,7 +44,7 @@
 </script>
 
 <body>
-	<Loader {currentRoute} />
+	<Loader />
 	<Scroller slots=5>
 		<div slot="scrollbox-1" data-toggle="show">
 			<Emerger className="about">
