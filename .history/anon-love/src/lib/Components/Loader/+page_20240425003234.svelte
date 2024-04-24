@@ -4,7 +4,6 @@
     import { loadAnimation } from './scripts/lottie.js';
     import { addMouseMoveListener } from './scripts/mouseSensing.js';
 
-    export let currentRoute;
     let progress = 0;
     let svgElement;
 
@@ -13,11 +12,6 @@
         const container = document.querySelector('.anon-signature');
         await loadAnimation(container);
         destroyLoader();
-    });
-
-    afterUpdate(() => {
-        updateProgress(30);
-        setTimeout(() => updateProgress(100), 2000);
     });
 </script>
 

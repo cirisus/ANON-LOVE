@@ -83,7 +83,7 @@ export function destroyLoader() {
         }
         if (sweepLine) {
             sweepLine.style.left = '100%';
-            sweepLine.style.boxShadow = '6px 2px 4px 0 #af2d78d1';
+            sweepLine.style.boxShadow = '6px 2px 4px 0px #af2d78d1';
         }
         fadeOutAnimation.finished.then(() => {
             loader.remove();

@@ -15,7 +15,11 @@
         destroyLoader();
     });
 
-    afterUpdate(() => {
+    afterUpdate(async () => {
+        addMouseMoveListener(svgElement);
+        const container = document.querySelector('.anon-signature');
+        await loadAnimation(container);
+        destroyLoader();
         updateProgress(30);
         setTimeout(() => updateProgress(100), 2000);
     });

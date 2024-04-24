@@ -51,18 +51,26 @@ export function updateProgress(newProgress, callback) {
     }
     }
 }
+let isDestroying = false;
+
 export function destroyLoader() {
-    let isDestroying = false;
+    console.log("Starting destroyLoader function");
     if (isDestroying) {
+        console.log("Loader is already being destroyed, exiting function");
         return;
     }
     isDestroying = true;
+    console.log("Set isDestroying to true");
 
     const loader = document.querySelector('#loader');
+    console.log("Selected #loader element");
     const descendants = loader.querySelectorAll('*');
+    console.log("Selected all descendants of #loader");
     const allAnimations = Array.from(descendants).flatMap(descendant => descendant.getAnimations());
+    console.log("Got all animations of descendants");
     Promise.all(allAnimations.map(animation => animation.finished))
     .then(() => {
+        console.log("All animations finished");
         const fadeOutAnimation = loader.animate([
             { opacity: 1, backdropFilter: 'blur(1rem) brightness(1.15) saturate(0.5)', filter: 'blur(0)', transform: 'scale(1)'},
             { opacity: 0.85, backdropFilter: 'blur(0.5rem) brightness(1.05) saturate(0.8)', filter: 'blur(0)', transform: 'scale(1)' },
@@ -72,21 +80,26 @@ export function destroyLoader() {
             easing: 'cubic-bezier(0.4, 0, 0.6, 1)',
             fill: 'forwards'
         });
+        console.log("Started fade out animation");
         const tipOrigin = document.querySelector('.tip-origin');
         const tipAlt = document.querySelector('.tip-alt');
         const sweepLine = document.querySelector('.sweep-line');
         if (tipOrigin) {
             tipOrigin.style.clipPath = `polygon(100% 0, 100% 0, 100% 70%, 100% 70%)`;
+            console.log("Updated clipPath of .tip-origin");
         }
         if (tipAlt) {
             tipAlt.style.clipPath = `polygon(0 0, 100% 0,100% 70%, 0 70%)`;
+            console.log("Updated clipPath of .tip-alt");
         }
         if (sweepLine) {
             sweepLine.style.left = '100%';
-            sweepLine.style.boxShadow = '6px 2px 4px 0 #af2d78d1';
+            console.log("Updated left of .sweep-line");
         }
         fadeOutAnimation.finished.then(() => {
+            console.log("Fade out animation finished");
             loader.remove();
+            console.log("Removed #loader element");
         });
     });
 }

@@ -15,9 +15,12 @@
         destroyLoader();
     });
 
-    afterUpdate(() => {
+    afterUpdate(async () => {
         updateProgress(30);
         setTimeout(() => updateProgress(100), 2000);
+        const container = document.querySelector('.anon-signature');
+        await loadAnimation(container);
+        destroyLoader();
     });
 </script>
 

@@ -154,8 +154,9 @@
         width: 0;
         height: 125%;
         border: 2px solid #af2d78;
+        animation: var(--clip-line);
         transition: all 1s;
         z-index: 1;
-        box-shadow: -6px 2px 4px 0 #af2d78d1;
+        box-shadow: -6px 2px 4px 0px #af2d78d1;
     }
 }

@@ -1,12 +1,12 @@
 <script>
-    import { onMount, afterUpdate } from 'svelte';
+    import { getContext, onMount } from 'svelte';
     import { destroyLoader ,updateProgress } from './scripts/loader.js';
     import { loadAnimation } from './scripts/lottie.js';
     import { addMouseMoveListener } from './scripts/mouseSensing.js';
 
-    export let currentRoute;
     let progress = 0;
     let svgElement;
+    let currentRoute = getContext('route');
 
     onMount(async () => {
         addMouseMoveListener(svgElement);
@@ -15,10 +15,11 @@
         destroyLoader();
     });
 
-    afterUpdate(() => {
+    // 监听 route 变化
+    $: {
         updateProgress(30);
-        setTimeout(() => updateProgress(100), 2000);
-    });
+        setTimeout(() => updateProgress(100), 2000); // 模拟加载过程
+    }
 </script>
 
 <div id="loader">

@@ -17,7 +17,7 @@
 
     afterUpdate(() => {
         updateProgress(30);
-        setTimeout(() => updateProgress(100), 2000);
+        setTimeout(() => updateProgress(100), 2000); // 模拟加载过程
     });
 </script>
 
