@@ -1,0 +1,3 @@
+# About me, and more
+
+Hi there! I am Chihaya Anon! Now studying at Haneoka Girls High School, and playing the role of guitarist in Mygo!!!!! Mygo!!!!! is the band where I together with my friends - who are samely, perplexed by the each own's pasts - play our music and shout to the world together. For the purpose of publicizing our band, I have started this blog. I will be posting about our band's activities, and also about my personal life. I hope you will enjoy reading it!
