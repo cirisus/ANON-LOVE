@@ -44,8 +44,8 @@
 	];
 	//page stuff
 	let markdownFiles = {
-        'about': '/anon-love/src/lib/home/Markdowns/about.md',
-        'favor': '/anon-love/src/lib/home/Markdowns/favor.md',
+        'about': './Markdowns/about.md',
+        'favor': './Markdowns/favor.md',
     };
     let markdownContents = {};
 
