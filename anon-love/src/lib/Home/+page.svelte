@@ -1,5 +1,6 @@
 <script lang="js">
 	import { blurSiblingsOfLoader } from "./scripts/common.js";
+	import { initializeMap } from "./scripts/map.js";
 	import { setContext, onMount } from 'svelte';
 	import { location, Router } from "svelte-spa-router";
     import SvelteMarkdown from 'svelte-markdown';
@@ -9,6 +10,7 @@
 	import Loader from '../Components/Loader/+page.svelte';
 	import Scroller from '../Components/dampScroller/+page.svelte';
 	import Emerger from '../Components/Emerger/+page.svelte';
+	import Dragger from '../Components/Dragger/+page.svelte';
 	//Router listener
     let currentRoute = $location;
 	setContext('route', currentRoute);
@@ -50,6 +52,7 @@
     let markdownContents = {};
 
     onMount(async () => {
+		initializeMap();
         blurSiblingsOfLoader();
 
         for (let name in markdownFiles) {
@@ -65,27 +68,21 @@
             window.open(link.href, '_blank');
         }
     }
-
-
 </script>
 
 <body>
-	<Loader {currentRoute} />
+	<!--<Loader {currentRoute} />-->
 	<Scroller slots=5>
 		<div slot="scrollbox-1" data-toggle="show">
+			<div class="showcase">
 			<Emerger className="about">
 				<SvelteMarkdown source={markdownContents['about']} />
 			</Emerger>
+			<Dragger nodes={10} />
 			<Emerger className="techs">
-				<h1>TECH STACK</h1>
-				This page is built with Svelte and SvelteKit. The source code is available on my GitHub. Below are the technologies used in this project:
-				<ul>
-					<li><b>Damp Scroller:</b> I used a fixed layer as the overall container and thus banned the usage of defaualt scrolling. I process the scroll by <span style="font-family: monospace">damper.js</span>, which process the scroll event and thus simulate scrolling to achieve damping effect and smooth page transition.</li>
-					<li><b>Loading Animation:</b> I used <span style="font-family: monospace">lottie.js</span> to demostrate a signature animation and onMount hook to destroy the loader, which prevents memory leaks while enhancing the scalability of animations.</li>
-					<li><b>Mouse Sensing:</b> It's used quite lot at this blog - I created a hover-sensing sidebar on the right end of the page, which saves page layout space while enhancing the experience.</li>
-					<li><b>Embedded Markdown components:</b> Popup components can directly parse external markdown files and use them in the content usage regulations of individual pages, with a high degree of freedom and easy content management.</li>
-				</ul>
+				<div id="map"></div>
 			</Emerger>
+			</div>
 		</div>
 		<div slot="scrollbox-2" data-toggle="hide">
 			<Emerger className="about">
@@ -125,5 +122,12 @@
 		display: flex;
         justify-content: center;
         width: -webkit-fill-available;
+	}
+	.showcase{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 50vw;
 	}
 </style>
