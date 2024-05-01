@@ -8,6 +8,7 @@ import css from 'rollup-plugin-css-only';
 import sveltePreprocess from 'svelte-preprocess';
 import autoprefixer from 'autoprefixer';
 import { string } from 'rollup-plugin-string';
+import geojson from 'rollup-plugin-geojson';
 
 const production = !process.env.ROLLUP_WATCH;
 const preprocessor = sveltePreprocess({
@@ -52,6 +53,7 @@ export default {
 		},
 	},
 	plugins: [
+		geojson(),
 		string({
 			include: '../docs/*.md'
 		}),

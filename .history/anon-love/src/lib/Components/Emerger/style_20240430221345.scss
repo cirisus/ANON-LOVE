@@ -1,0 +1,31 @@
+div {
+    opacity: 0;
+    transform: translateY(20%);
+    filter: blur(0.5rem);
+        width: 50%;
+        padding: 1rem;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #e8e8e878;
+        color: #403333;
+        border-radius: 1rem;
+        border: 2px solid #403333;
+        backdrop-filter: blur(1rem) brightness(1.2) saturate(0.5);
+        transition: transform 0.3s 0.3s, opacity 0.3s 0.3s, filter 0.3s 0.3s;
+        will-change: transform, opacity, filter;
+    //mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3CforeignObject width='100%25' height='100%25'%3E%3Cbody class='wrap' xmlns='http://www.w3.org/1999/xhtml'%3E%3Cstyle%3E.wrap{box-sizing:border-box;margin:0;height:100%25;padding:4px}.shadow{height:100%25;background:%23000;border-radius:10px;box-shadow:0 0 1px %23000,0 0 3px %23000,0 0 3px %23000e,0 0 4px %23000d,0 0 5px %23000d,0 0 6px %23000d}%3C/style%3E%3Cdiv class='shadow'/%3E%3C/body%3E%3C/foreignObject%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-position: center;
+}
+div.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+    transition: transform 0.3s 0.3s, opacity 0.3s 0.3s, filter 0.3s 0.3s;
+    will-change: transform, opacity, filter;
+    //mask: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3CforeignObject width='100%25' height='100%25'%3E%3Cbody class='wrap' xmlns='http://www.w3.org/1999/xhtml'%3E%3Cstyle%3E.wrap{box-sizing:border-box;margin:0;height:100%25;padding:4px}.shadow{height:100%25;background:%23000;border-radius:10px;box-shadow:0 0 1px %23000,0 0 3px %23000,0 0 3px %23000e,0 0 4px %23000d,0 0 5px %23000d,0 0 6px %23000d}%3C/style%3E%3Cdiv class='shadow'/%3E%3C/body%3E%3C/foreignObject%3E%3C/svg%3E");
+    mask-size: contain;
+    mask-position: center;
+}
