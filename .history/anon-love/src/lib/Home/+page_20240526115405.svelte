@@ -1,12 +1,23 @@
 <script lang="js">
 	import { blurSiblingsOfLoader } from "./scripts/common.js";
-	import { onMount } from 'svelte';
-	import { Router } from "svelte-spa-router";
+	import { initializeMap } from "./scripts/map.js";
+	import { setContext, onMount } from 'svelte';
+	import { location, Router } from "svelte-spa-router";
+    import SvelteMarkdown from 'svelte-markdown';
+
 
 	import Navigator from '../Components/Navigator/+page.svelte';
 	import Loader from '../Components/Loader/+page.svelte';
 	import Scroller from '../Components/dampScroller/+page.svelte';
 	import Emerger from '../Components/Emerger/+page.svelte';
+	import Dragger from '../Components/Dragger/+page.svelte';
+	//Router listener
+    let currentRoute = $location;
+	setContext('route', currentRoute);
+
+	$: {
+		currentRoute = $location;
+	}
     //Scrollbox slots
 	const slotNum = 5;
 	//Navigaition links
@@ -33,8 +44,24 @@
 			]
 		}
 	];
-	onMount(blurSiblingsOfLoader);
-	function handleClick(event) {
+	//page stuff
+	let markdownFiles = {
+        'about': '/anon-love/src/lib/home/Markdowns/about.md',
+        'favor': '/anon-love/src/lib/home/Markdowns/favor.md',
+    };
+    let markdownContents = {};
+
+    onMount(async () => {
+		initializeMap();
+        blurSiblingsOfLoader();
+
+        for (let name in markdownFiles) {
+            const response = await fetch(markdownFiles[name]);
+            markdownContents[name] = await response.text();
+        }
+    });
+
+    function handleClick(event) {
         const link = sideNavigator.find(item => item.text === event.detail.text);
         if (link && link.external) {
             event.preventDefault();
@@ -44,35 +71,27 @@
 </script>
 
 <body>
-	<Loader />
+	<!--<Loader {currentRoute} />-->
 	<Scroller slots=5>
 		<div slot="scrollbox-1" data-toggle="show">
+			<div class="showcase">
 			<Emerger className="about">
-				<h1>Who Am I</h1>
-				<p>
-					Hello! I'm Cirisus, a web developer and a fan of Bang Dream! I'm currently working on this website to showcase my works and to share my love for Bang Dream! I hope you enjoy your stay here!
-				</p>
+				<SvelteMarkdown source={markdownContents['about']} />
 			</Emerger>
-			<Emerger className="info">
-				<h1>INFO</h1>
-				<ul>
-					<li>Name: Cirisus</li>
-					<li>Age: 18</li>
-					<li>Locale: Singapore</li>
-					<li>Occupation: Student</li>
-				</ul>
+			<Emerger className="techs">
+				<div id="map"></div>
 			</Emerger>
+			</div>
 		</div>
 		<div slot="scrollbox-2" data-toggle="hide">
 			<Emerger className="about">
 				<h1>Favorite</h1>
-				<p>
-					- Bang Dream! <br>
-					- Web Development <br>
-					- Anime <br>
-					- Music <br>
-					- Games <br>
-				</p>
+				<ul>
+					<li>Bang Dream!</li>
+					<li>Web Development</li>
+					<li>Music</li>
+					<li>Games</li>
+				</ul>
 			</Emerger>
 		</div>
 		<div slot="scrollbox-3" data-toggle="hide">
@@ -103,20 +122,11 @@
         justify-content: center;
         width: -webkit-fill-available;
 	}
-	ul {
-		list-style-type: square;
-		margin-left: 2rem;
+	.showcase{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		max-width: 50vw;
 	}
-	.about {
-    width: 50%;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #e8e8e878;
-    color: #403333;
-    border: 2px solid #583636;
-    border-radius: 1rem;
-    backdrop-filter: blur(1rem);
-}
 </style>
