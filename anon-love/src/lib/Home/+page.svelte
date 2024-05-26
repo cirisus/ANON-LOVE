@@ -78,7 +78,6 @@
 			<Emerger className="about">
 				<SvelteMarkdown source={markdownContents['about']} />
 			</Emerger>
-			<Dragger nodes={10} />
 			<Emerger className="techs">
 				<div id="map"></div>
 			</Emerger>
